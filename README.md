@@ -38,7 +38,7 @@ Before this starting this lab, you should have learnt about:
 
 ## Introduction
 
-Welcome to this lab where you will practice how to design, create and manage a database. As a data expert at a car dealership company which sells new cars of various brands and models, you have been assigned the task of designing, creating, and managing a database to keep records about cars, salespersons, customers, and invoices. 
+Welcome to this lab where you will practice how to design, create and manage a database. In this lab, you will act as a data expert at a car dealership company which sells new cars of various brands and models. You have been assigned the task of designing, creating, and managing a database to keep records about cars, salespersons, customers, and invoices. 
 
 This lab consists of three challenges that will help you to achieve this task. In the first challenge, you will design the database by identifying the entities and their relationships. In the second challenge, you will create the database and tables using MySQL and the `CREATE DATABASE` and `CREATE TABLE` statements. Finally, in the third challenge, you will insert data into the tables using the `INSERT INTO` statement. In the bonus challenge, you will update data using the `UPDATE` statement and delete data using the `DELETE` statement.
 
@@ -48,7 +48,7 @@ By completing this lab, you will gain valuable experience in designing and creat
 
 Design an **Entity-Relationship (E-R) diagram** for your database.
 
-The database should have at least four tables: `cars`, `customers`, `salespersons` and `ìnvoices`.
+The database should have at least four tables: `cars`, `customers`, `salespersons` and `invoices`.
 
 The minimal information to be recorded is described below:
 
@@ -81,7 +81,7 @@ Your end product of this challenge should look something like the E-R diagram sh
 
 ![ERD](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/data-static/images/erd.png)
 
-Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimal requirements of your boss.
+Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
 
 
 ## Challenge 2 - Create the Database and Tables
@@ -90,7 +90,7 @@ In this challenge, you will create the database and tables based on the database
 
 1. Open MySQL Workbench.
 2. Create a new file named `create.sql`.
-1. **Create a MySQL database for this lab** using SQL Query Script in MySQL Workbench. You can execute the following code:
+3. **Create a MySQL database for this lab** using SQL Query Script in MySQL Workbench. You can execute the following code:
  
 	```sql
 	CREATE DATABASE IF NOT EXISTS lab_mysql;
@@ -98,11 +98,11 @@ In this challenge, you will create the database and tables based on the database
 	USE lab_mysql;
 	```
 
-1. **Write SQL queries to create the tables and columns based on your database design.**  
+4. **Write SQL queries to create the tables and columns based on your database design.**  
 
-	You will use the `CREATE TABLE` statement for this purpose. You can find the reference for `CREATE TABLE` statement [here](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html).
+	You will use the `CREATE TABLE` statement for this purpose. You can find the reference for the `CREATE TABLE` statement [here](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html).
 	
-	To test your CREATE TABLE statement, you should add a DROP TABLE statement above each CREATE TABLE statement in your script, like this:
+	To test your `CREATE TABLE` statement, you should add a `DROP TABLE` statement above each `CREATE TABLE` statement in your script, like this:
 
 	```sql
 	DROP TABLE IF EXISTS cars;
@@ -114,7 +114,7 @@ In this challenge, you will create the database and tables based on the database
 	
 	Make sure to end each statement with a semicolon.
 
-4. Save the `create.sql` file and execute it to create the database and tables. 
+5. Save the `create.sql` file and execute it to create the database and tables. 
 
 ## Challenge 3 - Seeding the Database
 
@@ -122,7 +122,7 @@ The purpose of *database seeding* is to provide some  initial data for an empty 
 
 Here are some instructions to seed your database:
 
-1. Open MySQL Workbench and connect to the database where you want to seed the data.
+1. Open MySQL Workbench and connect the database to where you want to seed the data.
 2. Create a new file named `seeding.sql`.
 3. Use the `INSERT INTO` statement to insert data into your database. For example:
 
@@ -139,12 +139,12 @@ Here are some instructions to seed your database:
 
 4. Save the `seeding.sql` file and execute it to insert the data into your database. 
 
-5. We provide some sample dummy data for your convenience, but please note that they may not be compatible with your specific database design. It is possible that you may need to modify them to fit the appropriate format.
+5. There is some sample dummy data for your convenience provided below, but please note that they may not be compatible with your specific database design. It is possible that you may need to modify them to fit the appropriate format.
 
 ### Cars
 
 | id | vin | manufacturer | model | year | color |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | 1 | 3K096I98581DHSNUP | Volkswagen | Tiguan | 2019 | Blue |
 | 2 | ZM8G7BEUQZ97IH46V | Peugeot | Rifter | 2019 | Red |
 | 3 | RKXVNNIHLVVZOUB4M | Ford | Fusion | 2018 | White |
@@ -230,12 +230,8 @@ git push origin master
 
 ## References
 
-[Database seeding](https://en.wikipedia.org/wiki/Database_seeding)
-
-[MySQL Reference: Creating a Table](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html)
-
-[MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
-
-[MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
-
-[MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
+- [Database seeding](https://en.wikipedia.org/wiki/Database_seeding)
+- [MySQL Reference: Creating a Table](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html)
+- [MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
+- [MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
+- [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
