@@ -83,6 +83,7 @@ Your end product of this challenge should look something like the E-R diagram sh
 
 Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
 
+![Database Schema Image](images/schema.PNG "Database schema")
 
 ## Challenge 2 - Create the Database and Tables
 
