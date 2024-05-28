@@ -1,0 +1,42 @@
+
+CREATE DATABASE CarSalesDB;
+
+USE CarSalesDB;
+
+CREATE TABLE Cars (
+    CarID INT AUTO_INCREMENT PRIMARY KEY,
+    VIN VARCHAR(50) NOT NULL,
+    Manufacturer VARCHAR(50) NOT NULL,
+    Model VARCHAR(50) NOT NULL,
+    Year INT NOT NULL,
+    Color VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    PhoneNumber VARCHAR(20) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Address VARCHAR(255) NOT NULL,
+    City VARCHAR(100) NOT NULL,
+    StateProvince VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    ZipPostalCode VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Salespersons (
+    SalespersonID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Store VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Invoices (
+    InvoiceNumber INT AUTO_INCREMENT PRIMARY KEY,
+    Date DATE NOT NULL,
+    CarID INT NOT NULL,
+    CustomerID INT NOT NULL,
+    SalespersonID INT NOT NULL,
+    FOREIGN KEY (CarID) REFERENCES Cars(CarID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (SalespersonID) REFERENCES Salespersons(SalespersonID)
+);
