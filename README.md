@@ -54,7 +54,7 @@ The minimal information to be recorded is described below:
 
 1. **Cars** - e.g. the vehicle identification number (VIN), manufacturer, model, year, and color of the cars in your company's inventory.
 
-1. **Customers** - e.g. the customer ID, name, phone number, email, address, city, state/province, country, and zip/postal code of the customers.
+1. ** ** - e.g. the customer ID, name, phone number, email, address, city, state/province, country, and zip/postal code of the customers.
 
 1. **Salespersons** - e.g. staff ID, name, and the store at your company.
 
