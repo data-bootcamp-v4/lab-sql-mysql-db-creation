@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+	
+USE lab_mysql;
+
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars ;
