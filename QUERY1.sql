@@ -1,0 +1,2 @@
+-- Active: 1721291050538@@127.0.0.1@3306@LAB12
+SELECT * FROM Cars WHERE Color = 'Blue';

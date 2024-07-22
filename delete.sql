@@ -1,0 +1,1 @@
+DELETE FROM Cars WHERE  Model = 'V60 Cross Country';
