@@ -1,0 +1,2 @@
+-- Active: 1721292127253@@127.0.0.1@3306@lab_mysql
+DELETE FROM Cars WHERE Car_id= 6
