@@ -1,0 +1,41 @@
+-- Active: 1721290976752@@127.0.0.1@3306@dealership
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+USE lab_mysql;
+DROP TABLE IF EXISTS cars;
+CREATE TABLE cars (id INT NOT NULL AUTO_INCREMENT,
+vin VARCHAR(64) NOT NULL,
+manufacturer VARCHAR (64) NOT NULL,
+model VARCHAR(64)NOT NULL, 
+car_year INT NOT NULL, 
+color VARCHAR(32) NOT NUll,
+PRIMARY KEY(`id`));
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (customer_ID INT NOT NULL AUTO_INCREMENT, 
+name VARCHAR(32) NOT NULL, 
+phone VARCHAR(32) NOT NULL, 
+email VARCHAR(32)NOT NULL, 
+address_cust VARCHAR(64) NOT NULL, 
+city VARCHAR(64) NOT NULL, 
+state_province VARCHAR(32) NOT NULL, 
+country VARCHAR(32) NOT NULL,
+zip_code INT NOT NULL,
+PRIMARY KEY (`customer_ID`)
+);
+
+DROP TABLE IF EXISTS salespersons;
+
+CREATE TABLE salespersons (staff_ID INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(32) NOT NULL, 
+store VARCHAR (32) NOT NULL,
+PRIMARY KEY (`staff_ID`)
+);
+
+DROP TABLE IF EXISTS invoice;
+
+CREATE TABLE invoice (invoice_number INT NOT NULL AUTO_INCREMENT,
+date DATE, id INT NOT NULL, 
+customer_ID INT NOT NULL, 
+staff_ID INT NOT NULL,
+PRIMARY KEY (`invoice_number`)
+);
+
