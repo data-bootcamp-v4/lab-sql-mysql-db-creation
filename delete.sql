@@ -1,0 +1,3 @@
+DELETE FROM Cars
+WHERE VIN = 'DAM41UDN3CHU2WVF6'
+AND Model = 'V60 Cross Country';
