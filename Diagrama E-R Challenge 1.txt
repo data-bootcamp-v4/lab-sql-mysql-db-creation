@@ -1,0 +1,34 @@
+erDiagram
+    CAR {
+        string VIN PK "Vehicle Identification Number"
+        string manufacturer
+        string model
+        int year
+        string color
+    }
+    CUSTOMER {
+        int customerID PK "Auto-increment ID"
+        string name
+        string phone
+        string email
+        string address
+        string city
+        string state_province
+        string country
+        string zip_postal_code
+    }
+    SALESPERSON {
+        int staffID PK "Auto-increment ID"
+        string name
+        string store
+    }
+    INVOICE {
+        int invoiceNumber PK "Auto-increment ID"
+        date date
+        string carVIN FK "Foreign Key to CAR"
+        int customerID FK "Foreign Key to CUSTOMER"
+        int staffID FK "Foreign Key to SALESPERSON"
+    }
+    CUSTOMER ||--o{ INVOICE : "purchases"
+    SALESPERSON ||--o{ INVOICE : "issues"
+    CAR ||--|{ INVOICE : "involves"
