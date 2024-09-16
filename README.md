@@ -216,6 +216,120 @@ Complete the challenges in this readme. Follow the instructions and implement:
 
 - [OPTIONAL] `update.sql` and `delete.sql`
 
+
+## ER-Diagram
+
+![Diagrama E-R](https://github.com/LuisHRF/lab-sql-mysql-db-creation/blob/main/cars_er_diagram.png)
+
+## create.sql
+
+```sql
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+-- Crear tabla cars
+
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars (
+    VIN VARCHAR(17) PRIMARY KEY,  -- (Primary Key)
+    Manufacturer VARCHAR(50),      
+    Model VARCHAR(50),             
+    Year INT,                      
+    Color VARCHAR(20)              
+);
+
+-- Crear tabla customers
+
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,  -- ID del cliente (Primary Key)
+    Name VARCHAR(100),                          
+    PhoneNumber VARCHAR(15),                    
+    Email VARCHAR(50),                         
+    Address VARCHAR(100),                       
+    City VARCHAR(50),                          
+    StateProvince VARCHAR(50),                  
+    Country VARCHAR(50),                      
+    PostalCode VARCHAR(10)                      
+);
+
+-- Crear tabla salespersons
+
+DROP TABLE IF EXISTS salespersons;
+
+CREATE TABLE salespersons (
+    SalespersonID INT AUTO_INCREMENT PRIMARY KEY,  -- ID del vendedor (Primary Key)
+    Name VARCHAR(100),                             
+    Store VARCHAR(50)                              
+);
+
+-- Crear tabla invoices
+
+DROP TABLE IF EXISTS invoices;
+
+CREATE TABLE invoices (
+    InvoiceID INT AUTO_INCREMENT PRIMARY KEY,  -- Número de factura (Primary Key)
+    Date DATE,                                
+    VIN VARCHAR(17),                          
+    CustomerID INT,                           
+    SalespersonID INT,                       
+    
+    -- Definición de las claves foráneas
+    FOREIGN KEY (VIN) REFERENCES cars(VIN),
+    FOREIGN KEY (CustomerID) REFERENCES customers(CustomerID),
+    FOREIGN KEY (SalespersonID) REFERENCES salespersons(SalespersonID)
+);
+```
+
+## seeding.sql
+
+```sql
+USE lab_mysql;
+
+-- Creación de tablas insertando datos: cars
+
+INSERT INTO cars (VIN, Manufacturer, Model, Year, Color)
+VALUES 
+('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 2019, 'Azul'),
+('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 2019, 'Rojo'),
+('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusión', 2018, 'Blanco'),
+('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', 2018, 'Plata'),
+('PRESA41UDN3CHU2WVF6', 'Volvo', 'V60', 2019, 'Gris'),
+('PRESA41UDN3CHU2WVF6', 'Volvo', 'V60 Cross Country', 2019, 'Gris');
+
+-- Insertar datos en Customers 
+
+INSERT INTO customers (CustomerID, Name, PhoneNumber, Email, Address, City, StateProvince, Country, PostalCode)
+VALUES 
+(10001, 'Pablo Picasso', '+34 636 17 63 82', '-', 'Paseo de la Chopera, 14 años', 'Madrid', 'Madrid', 'España', '28045'),
+(20001, 'Abraham Lincoln', '+1 305 907 7086', '-', '120 SW 8th St', 'Miami', 'Florida', 'Estados Unidos', '33130'),
+(30001, 'Napoléon Bonaparte', '+33 1 79 75 40 00', '-', 'Rue du Colisée 40', 'París', 'Île-de-France', 'Francia', '75008');
+
+-- Insertar datos en Salespersons
+
+INSERT INTO salespersons (SalespersonID, Name, Store)
+VALUES 
+(1, 'Petey Cruiser', 'Madrid'),
+(2, 'Anna Sthesia', 'Barcelona'),
+(3, 'Paul Molive', 'Berlín'),
+(4, 'Gail Forcewind', 'París'),
+(5, 'Turner Paige', 'Miami'),
+(6, 'Bob Frapples', 'Ciudad de México'),
+(7, 'Walter Melón', 'Amsterdam'),
+(8, 'Leer Shonda', 'São Paulo');
+
+-- Insertar invoces
+
+INSERT INTO invoices (InvoiceID, Date, VIN, CustomerID, SalespersonID)
+VALUES 
+(1, '2018-08-22', '3K096I98581DHSNUP', 1, 3), 
+(2, '2018-12-31', 'RKXVNNIHLVVZOUB4M', 3, 5), 
+(3, '2019-01-22', 'ZM8G7BEUQZ97IH46V', 2, 7);
+```
+
 ## Submission
 
 - Upon completion, run the following commands:
