@@ -1,0 +1,34 @@
+
+M = mandatory
+
+Table : Cars
+vehicle_id (PK) M
+manufacturer  M
+model  M
+year  M
+color 
+
+Table : Customers 
+customer_id (PK) M
+name  M
+phone M
+email M
+address
+city
+state_province
+country
+zip_code
+vehicle_id (FK)  A Customer has one or severals cars
+
+Table : Salespersons
+staff_ID (PK) M
+name   M
+store 
+customer_id (FK)  A Salesperson has one or severals customers
+
+Table : Invoices 
+invoice_number (PK)  M
+date  M
+car (FK) M
+customer (FK ?) M
+salesperson (FK) M   On an Invoice we should retrieve the differents informations from other tables.
