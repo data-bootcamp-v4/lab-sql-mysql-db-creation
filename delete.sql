@@ -1,0 +1,7 @@
+USE `car_dealership`;
+
+#DELETE FROM cars WHERE model='V60';
+
+DELETE FROM cars
+WHERE VIN = 'DAM41UDN3CHU2WVF6'
+LIMIT 1;
