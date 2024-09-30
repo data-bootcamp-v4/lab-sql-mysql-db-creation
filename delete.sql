@@ -1,0 +1,8 @@
+DELETE FROM cars
+WHERE vin = "DAM41UDN3CHU2WVF6" 
+AND model = "V60 Cross Country";
+
+SELECT *
+FROM cars;
+
+-- SET SQL_SAFE_UPDATES = 1;
