@@ -1,0 +1,8 @@
+SELECT * FROM cars;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM cars
+WHERE id = 5;
+
+SELECT * FROM cars;
