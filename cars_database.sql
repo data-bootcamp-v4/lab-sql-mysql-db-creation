@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    VIN VARCHAR(255) NOT NULL ,
+    manufacturer VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    year YEAR NOT NULL,
+    color VARCHAR(255) NOT NULL
+) ENGINE=InnoDB ; 
+
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cust_id BIGINT NOT NULL ,
+    cust_name VARCHAR(255) NOT NULL,
+    cust_phone VARCHAR(255) NOT NULL,
+    cust_email VARCHAR(255),
+    cust_address VARCHAR(255) NOT NULL,
+    cust_city VARCHAR(255) NOT NULL,
+    cust_state VARCHAR(255) NOT NULL,
+    cust_country  VARCHAR(255) NOT NULL,
+    cust_zipcode BIGINT NOT NULL
+) ENGINE=InnoDB ;
+
+DROP TABLE IF EXISTS sales_persons;
+
+CREATE TABLE salespersons (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    staff_id VARCHAR(255) NOT NULL ,
+    name VARCHAR(255) NOT NULL,
+    store VARCHAR(255) NOT NULL
+) ENGINE=InnoDB ;
+
+DROP TABLE IF EXISTS invoices;
+
+CREATE TABLE invoices(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    invoice_number BIGINT NOT NULL,
+    date DATE NOT NULL,
+    car_id BIGINT UNSIGNED NOT NULL,
+    customer_id BIGINT UNSIGNED NOT NULL,
+    staff_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (car_id) REFERENCES cars (id), 
+    FOREIGN KEY (customer_id) REFERENCES customers (id), 
+    FOREIGN KEY (staff_id) REFERENCES salespersons (id)
+) ENGINE=InnoDB ;
+
+
