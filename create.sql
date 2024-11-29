@@ -1,0 +1,58 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+USE lab_mysql;
+SHOW TABLES;
+
+DROP TABLE IF EXISTS invoices;
+CREATE TABLE invoices (
+id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL,
+invoice_nr VARCHAR(12) NOT NULL,  
+vin VARCHAR(17) NOT NULL UNIQUE, 
+customer_id VARCHAR(10) NOT NULL UNIQUE, 
+staff_id VARCHAR(5) NOT NULL UNIQUE, 
+date_issued DATE NOT NULL,
+PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (
+id BIGINT NOT NULL AUTO_INCREMENT, 
+customer_id VARCHAR(10) NOT NULL, 
+last_name VARCHAR(30) NOT NULL, 
+first_name VARCHAR(30) NOT NULL, 
+phone_number VARCHAR(15) NOT NULL, 
+email VARCHAR(100) NOT NULL, 
+address VARCHAR(100) NOT NULL, 
+city VARCHAR(100) NOT NULL, 
+state_or_province VARCHAR(100) NOT NULL, 
+country VARCHAR(100) NOT NULL, 
+postal_code VARCHAR(20) NOT NULL, 
+PRIMARY KEY (id), 
+FOREIGN KEY (customer_id) REFERENCES invoices(customer_id)
+); 
+SELECT * FROM customers;
+
+DROP TABLE IF EXISTS cars;
+CREATE TABLE cars (
+id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL,
+vin VARCHAR(17) NOT NULL, 
+manufacturer VARCHAR(30) NOT NULL, 
+model VARCHAR(30) NOT NULL, 
+production_year YEAR NOT NULL, 
+color VARCHAR(30) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (vin) REFERENCES invoices(vin)
+);
+
+DROP TABLE IF EXISTS salesperson;
+CREATE TABLE salesperson (
+id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL, 
+staff_id VARCHAR(10) NOT NULL, 
+last_name VARCHAR(30) NOT NULL, 
+first_name VARCHAR(30) NOT NULL, 
+store VARCHAR(50) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (staff_id) REFERENCES invoices(staff_id)
+); 
+
+SHOW TABLES FROM lab_mysql;
+SELECT * FROM cars; -- check 
