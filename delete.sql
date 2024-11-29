@@ -1,0 +1,2 @@
+DELETE FROM cars WHERE id = 4;
+DELETE FROM cars WHERE id = 6;
