@@ -1,0 +1,3 @@
+USE Happiness;
+SELECT * FROM WHR_2022 LIMIT 10;
+
