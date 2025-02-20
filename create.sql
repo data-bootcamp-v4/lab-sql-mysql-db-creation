@@ -1,0 +1,50 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  VIN INT,
+  manufacturer text,
+  model TEXT ,
+  year  DATE ,
+  color INT
+);
+CREATE TABLE Customers (
+    id BIGINT  AUTO_INCREMENT PRIMARY KEY,
+    name LONGTEXT NOT NULL,
+    phone_number INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    adress VARCHAR(255) NOT NULL,
+    city  LONGTEXT NOT NULL,
+    state LONGTEXT NOT NULL,
+    country MEDIUMTEXT NOT NULL,
+    postal INT NOT NULL
+);
+CREATE TABLE  Salespersons (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name LONGTEXT NOT NULL,
+    store LONGTEXT NOT NULL
+);
+
+CREATE TABLE invoices(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    invoice_number VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    salesperson_id INT NOT NULL,
+    custumer_id INT NOT NULL,
+    car_id INT NOT NULL
+);
+CREATE TABLE store(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name LONGTEXT NOT NULL,
+    adress VARCHAR(255) NOT NULL,
+    country LONGTEXT NOT NULL,
+    staff_id VARCHAR(255) NOT NULL,
+    date DATE NOT NULL
+);
+
+
+SHOW TABLES;
+/*
