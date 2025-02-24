@@ -83,6 +83,8 @@ Your end product of this challenge should look something like the E-R diagram sh
 
 Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
 
+!['Diagram'](img/structure.jpg)
+
 
 ## Challenge 2 - Create the Database and Tables
 
@@ -114,7 +116,12 @@ In this challenge, you will create the database and tables based on the database
 	
 	Make sure to end each statement with a semicolon.
 
-5. Save the `create.sql` file and execute it to create the database and tables. 
+5. Save the `create.sql` file and execute it to create the database and tables.
+
+
+``` sql
+mysql -u root -p car_dealership_company < src/create.sql
+``` 
 
 ## Challenge 3 - Seeding the Database
 
@@ -140,6 +147,11 @@ Here are some instructions to seed your database:
 4. Save the `seeding.sql` file and execute it to insert the data into your database. 
 
 5. There is some sample dummy data for your convenience provided below, but please note that they may not be compatible with your specific database design. It is possible that you may need to modify them to fit the appropriate format.
+
+
+``` sql
+mysql -u root -p car_dealership_company < src/seeding.sql
+```
 
 ### Cars
 
@@ -199,6 +211,11 @@ To begin, you have been provided with the email addresses of three customers in 
 Additionally, you have discovered a duplicated car entry with the VIN `DAM41UDN3CHU2WVF6`, and you want to remove the entry with car ID #4 from the database. You will need to create a `delete.sql` file to perform this deletion.
 
 Hint: if you get an error *You are using safe update mode* while updating, you can fix it by desabling safe mode using `SET SQL_SAFE_UPDATES = 0;`
+
+``` sql
+mysql -u root -p car_dealership_company < src/update.sql
+mysql -u root -p car_dealership_company < src/delete.sql
+```
 
 ## Requirements
 
