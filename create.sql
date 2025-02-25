@@ -1,0 +1,55 @@
+
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+
+DROP TABLE IF EXISTS Cars;
+CREATE TABLE Cars (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    VIN VARCHAR(17) NOT NULL,
+    Manufacturer VARCHAR(50) NOT NULL,
+    Model VARCHAR(50) NOT NULL,
+    Year INT NOT NULL,
+    Color VARCHAR(20) NOT NULL
+);
+
+
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Cust_ID INT NOT NULL,
+    Cust_Name VARCHAR(100) NOT NULL,
+    Cust_Phone VARCHAR(20),
+    Cust_Email VARCHAR(50),
+    Cust_Address VARCHAR(100),
+    Cust_City VARCHAR(50),
+    Cust_State VARCHAR(50),
+    Cust_Country VARCHAR(50),
+    Cust_Zipcode VARCHAR(10)
+);
+
+
+DROP TABLE IF EXISTS Salespersons;
+CREATE TABLE Salespersons (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Staff_ID INT NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Store VARCHAR(50) NOT NULL
+);
+
+
+DROP TABLE IF EXISTS Invoices;
+CREATE TABLE Invoices (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Invoice_Number VARCHAR(20) NOT NULL,
+    Date DATE NOT NULL,
+    Car INT NOT NULL,
+    Customer INT NOT NULL,
+    Salesperson INT NOT NULL,
+    FOREIGN KEY (Car) REFERENCES Cars(ID),
+    FOREIGN KEY (Customer) REFERENCES Customers(ID),
+    FOREIGN KEY (Salesperson) REFERENCES Salespersons(ID)
+);
+
+
