@@ -235,3 +235,6 @@ git push origin master
 - [MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
 - [MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
 - [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
+
+---
+Link to ERD: Link to ERD: https://drive.google.com/file/d/1g0J0wRGVMb5WEjb5aTt2wlhAiASeUnNz/view?usp=sharing 
