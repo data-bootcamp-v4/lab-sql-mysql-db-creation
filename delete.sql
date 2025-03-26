@@ -1,0 +1,12 @@
+USE lab_mysql;
+
+SELECT vin, COUNT(*)
+FROM cars
+GROUP BY vin
+HAVING COUNT(*) > 1;
+
+DELETE FROM cars
+WHERE vin = 'DAM41UDN3CHU2WVF6'
+LIMIT 1;
+
+SELECT * FROM cars
