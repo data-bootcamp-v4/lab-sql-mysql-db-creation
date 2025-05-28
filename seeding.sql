@@ -15,8 +15,8 @@ INSERT INTO Salespersons (Name, Email, Phone, StoreID)
             
 INSERT INTO Customers (Name, Address, City, Province_State, PostalCode, Country, Phone, Email)
 	VALUES 	('Pablo Picasso', 'Paseo de la Chopera, 14', 'Madrid', 'Madrid', '28045', 'Spain', 34636176382, '-'),
-			('Abraham Licoln', '120 SW 8th St', 'Miami', 'Florida', '33130', 'USA', 13059077086, '-'),
-            ('Napolén Bonaparte', '40 Rue du Colisée', 'Paris', 'Ile-de-France', '75008', 'France', 33179754000, '-');
+			('Abraham Lincoln', '120 SW 8th St', 'Miami', 'Florida', '33130', 'USA', 13059077086, '-'),
+            ('Napoléon Bonaparte', '40 Rue du Colisée', 'Paris', 'Ile-de-France', '75008', 'France', 33179754000, '-');
             
 INSERT INTO Manufacturers (ManufacturerID, Name, Country)
 	VALUES 	('VOL', 'Volvo', 'Sweden'),
@@ -41,6 +41,6 @@ INSERT INTO Cars (VIN, ModelID, Color)
 			('DAM41UDN3CHU2WVF6', 'VOLV60Cross2019', 'Gray');   
             
 INSERT INTO Invoices (Invoice_Number, Date, StoreID, CustomerID, StaffID, VIN)
-	VALUES 	(852399038, STR_TO_DATE('22-08-2018', '%d-%m-%Y'), 1, 1, 1, 'PT666'),
-			(731166526, STR_TO_DATE('31-12-2018', '%d-%m-%Y'), 2, 2, 2, 'PT159'),
-            (271135104, STR_TO_DATE('22-01-2019', '%d-%m-%Y'), 3, 3, 3, 'FR777');            
+	VALUES 	(852399038, STR_TO_DATE('22-08-2018', '%d-%m-%Y'), 1, 1, 1, '3K096I98581DHSNUP'),
+			(731166526, STR_TO_DATE('31-12-2018', '%d-%m-%Y'), 2, 2, 2, 'ZM8G7BEUQZ97IH46V'),
+            (271135104, STR_TO_DATE('22-01-2019', '%d-%m-%Y'), 3, 3, 3, 'RKXVNNIHLVVZOUB4M');            
