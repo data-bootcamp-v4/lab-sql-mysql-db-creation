@@ -1,0 +1,5 @@
+USE LAB_MYSQL;
+
+DELETE FROM cars WHERE car_id = 4;
+
+SELECT * FROM CARS;
