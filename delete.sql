@@ -1,6 +1,6 @@
 
 
 delete from cars
-where vin = 'DAM41UDN3CHU2WVF6'
-and id = 5;
+where vin = 'HKNDGS7CU31E9Z7JW'
+and id = 4;
 

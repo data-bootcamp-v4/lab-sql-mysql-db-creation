@@ -5,58 +5,62 @@ USE lab_mysql;
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE `customers` (
-  `id` int,
-  `cust_id` int,
-  `cust_name` varchar(25),
-  `cust_phone` varchar(25),
-  `cust_email` varchar(25),
-  `address_id` int,
-  PRIMARY KEY (`id`)
-);
+  `id` int not null AUTO_INCREMENT,
+  `cust_id` int null,
+  `cust_name` varchar(25) null,
+  `cust_phone` varchar(25) null,
+  `cust_email` varchar(25) null,
+  `address_id` int not null,
+  PRIMARY KEY (`id`),
+  foreign key (`address_id`) references address(address_id)
+  );
 
 DROP TABLE IF EXISTS cars;
 
 CREATE TABLE `cars` (
-  `id` int,
-  `vin` varchar(25),
-  `manufacture` varchar(25),
-  `model` varchar(25),
-  `year` year,
-  `color` varchar(25),
+  `id` int not null AUTO_INCREMENT,
+  `vin` varchar(25) null,
+  `manufacture` varchar(25) null,
+  `model` varchar(25) null,
+  `year` year  null,
+  `color` varchar(25) null,
   PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS invoices;
 
 CREATE TABLE `invoices` (
-  `id` int,
-  `invoice_number` int,
-  `date` date,
-  `car` int,
-  `customer` int,
-  `salesperson` int,
-  PRIMARY KEY (`id`)
+  `id` int not null AUTO_INCREMENT,
+  `invoice_number` int null,
+  `date` date null,
+  `car` int null,
+  `customer` int null,
+  `salesperson` int null,
+  PRIMARY KEY (`id`),
+  foreign key (`car`) references cars(id),
+    foreign key (`customer`) references customers(id),
+      foreign key (`salesperson`) references salesperson(id)
 );
 
 DROP TABLE IF EXISTS address;
 
 CREATE TABLE `address` (
-  `address_id` int,
-  `cust_address` varchar(25),
-  `cust_city` varchar(25),
-  `cust_state` varchar(25),
-  `cust_country` varchar(25),
-  `cust_zipcode` int,
+  `address_id` int not null AUTO_INCREMENT,
+  `cust_address` varchar(25) null,
+  `cust_city` varchar(25) null,
+  `cust_state` varchar(25) null,
+  `cust_country` varchar(25) null,
+  `cust_zipcode` int null,
   PRIMARY KEY (`address_id`)
 );
 
 DROP TABLE IF EXISTS salesperson;
 
 CREATE TABLE `salesperson` (
-  `id` int,
-  `staff_id` int,
-  `name` varchar(25),
-  `store` varchar(25),
+  `id` int not null AUTO_INCREMENT,
+  `staff_id` int null,
+  `name` varchar(25) null,
+  `store` varchar(25) null,
   PRIMARY KEY (`id`)
 );
 
