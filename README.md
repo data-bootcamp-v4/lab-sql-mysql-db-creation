@@ -231,7 +231,66 @@ git push origin master
 ## References
 
 - [Database seeding](https://en.wikipedia.org/wiki/Database_seeding)
-- [MySQL Reference: Creating a Table](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html)
+- [MySQL Reference: Creating a Table](https://dev.CREATE DATABASE IF NOT EXISTS lab_mysql;
+USE lab_mysql;
+DROP TABLE IF EXISTS cars;
+CREATE TABLE cars (
+ VIN VARCHAR(50),
+ manufacture VARCHAR(50),
+ model VARCHAR(50), 
+ year VARCHAR(50), 
+ color VARCHAR(50)
+ );
+ DROP TABLE IF EXISTS customers;
+ CREATE TABLE customers (
+ customerID VARCHAR(100),
+ name VARCHAR(50),
+ phonenumber VARCHAR(50),
+ email VARCHAR(50),
+ address VARCHAR(50),
+ city VARCHAR(50),
+ state_province VARCHAR(50),
+ country VARCHAR(50),
+ zip_postalcode VARCHAR(50)
+ );
+ DROP TABLE IF EXISTS salesperons;
+ CREATE TABLE salespersons (
+ staffID VARCHAR(100),
+ name_staff VARCHAR(50),
+ store VARCHAR(50)
+ );
+ DROP TABLE IF EXISTS invoices;
+ CREATE TABLE invoices (
+ invoice_number VARCHAR(100),
+ date VARCHAR(50),
+ VIN VARCHAR(50),
+ staff_ID VARCHAR(100)
+ );mysql.com/doc/refman/8.0/en/creating-tables.html)[Uploading INSERT INTO cars (VIN, manufacture, model, year, color)
+VALUES ('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 2019, 'Blue'),
+	('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 2019, 'Red'),
+    ('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusion', 2018, 'White'),
+    ('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', 2018, 'Silver'),
+    ('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', 2019, 'Gray'),
+    ('DAM41UDN3CHU2WVF6', 'Volvo', 'V60 Cross Country', 2019, 'Gray');
+INSERT INTO customers (customerID, name, phonenumber, email, address, city, state_province, country, zip_postalcode)
+VALUES (10001, 'Pablo Picasso',	'+34 636 17 63 82',	'-', 'Paseo de la Chopera, 14', 'Madrid', 'Madrid',	'Spain', '28045'),
+       (20001, 'Abraham Lincoln', '+1 305 907 7086',	'-', '120 SW 8th St', 'Miami', 'Florida', 'United States', '33130'),
+       (30001, 'Napoléon Bonaparte', '+33 1 79 75 40 00', '-', '40 Rue du Colisée', 'Paris', 'Île-de-France',	'France', '75008');
+INSERT INTO invoices (invoice_number, date, VIN, staff_ID)  
+VALUES ('852399038', '22-08-201', '3K096I98581DHSNUP', '00003' ),  
+       ('731166526', '31-12-2018', 'RKXVNNIHLVVZOUB4M', '00005'),
+       ('271135104', '22-01-2019', 'ZM8G7BEUQZ97IH46V', '00007');
+INSERT INTO salespersons  (staffID, name_staff, store)
+VALUES ('00001', 'Petey Cruiser', 'Madrid'),
+	 ('00002', 'Anna Sthesia', 'Barcelona'),
+     ('00003', 'Paul Molive', 'Berlin'),
+     ('00004', 'Gail Forcewind', 'Paris'),
+     ('00005', 'Paige Turner', 'Mimia'),
+     ('00006',	'Bob Frapples', 'Mexico City'),
+     ('00007',	'Walter Melon', 'Amsterdam'),
+     ('00008',	'Shonda Leer', 'São Paulo');
+     seeding.sql…]()
+
 - [MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
 - [MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
-- [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
+- [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)<img width="1140" height="840" alt="Screenshot 2025-07-22 152715" src="https://github.com/user-attachments/assets/a221090a-3fc8-4a02-93d5-2bdf551bffe9" />
