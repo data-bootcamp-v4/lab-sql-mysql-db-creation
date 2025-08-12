@@ -1,0 +1,4 @@
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM Cars
+WHERE car_id = 5;
