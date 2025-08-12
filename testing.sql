@@ -1,0 +1,1 @@
+SELECT * FROM Salesperson LIMIT 10;
