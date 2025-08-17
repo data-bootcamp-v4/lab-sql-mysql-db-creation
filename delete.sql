@@ -1,0 +1,4 @@
+USE car_sales_lab3;
+
+DELETE FROM cars
+WHERE ID = 6 AND VIN = 'DAM41UDN3CHU2WVF7';
