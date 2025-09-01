@@ -1,0 +1,4 @@
+invoice_num,cust_name,salesperson,manufacturer,model,year
+INV-0001,"(no customer)","Bob Jones",Honda,Civic,2020
+INV-0002,"(no customer)","Eva Lee",Mercedes,E350,2018
+INV-0003,"(no customer)","Carlos Perez",Honda,Civic,2020
