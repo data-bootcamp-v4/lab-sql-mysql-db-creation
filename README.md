@@ -28,7 +28,7 @@ Before this starting this lab, you should have learnt about:
 
 - Fundamental concepts of database design, including entities, attributes, primary keys, and foreign keys.
 - Basic comprehension of SQL syntax and statements, such as CREATE, INSERT INTO, UPDATE, and DELETE.
-- Familiarity with the concept of NOT NULL constraints and data types in SQL.
+- Familiarity with the concept of NOT NULL constraints and data types in SQL
  
   <br>
   <hr> 
