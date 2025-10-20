@@ -64,6 +64,6 @@ VALUES
 -- check inserted data --
 SELECT * FROM cars;
 SELECT * FROM customers;
-SELECT * FROM salesperson;
+SELECT * FROM salespersons;
 SELECT * FROM invoices;
 
