@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership ERD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .entity-box {
+            background-color: white;
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .header {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+        .attribute {
+            padding: 0.25rem 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+        }
+        .attribute:last-child {
+            border-bottom: none;
+        }
+        .pk {
+            font-weight: 700;
+            color: #10b981; /* Green for Primary Key */
+        }
+        .fk {
+            font-weight: 700;
+            color: #ef4444; /* Red for Foreign Key */
+        }
+        /* Custom layout for visualization - relative positioning */
+        .erd-container {
+            position: relative;
+            min-height: 800px; /* Space for elements */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Car Dealership ERD</h1>
+        <p class="text-gray-600 mb-10 text-center">Visual representation of database design (Challenge 1).</p>
+    </div>
+
+    <div class="erd-container flex flex-wrap justify-center gap-12">
+
+        <!-- Cars Entity (Top Left) -->
+        <div id="cars" class="entity-box">
+            <div class="header">CARS</div>
+            <div class="attributes">
+                <div class="attribute"><span class="pk">PK</span> car_id (INT)</div>
+                <div class="attribute">VIN (VARCHAR(17)) <span class="text-gray-500 text-xs">(NOT NULL, UNIQUE)</span></div>
+                <div class="attribute">manufacturer (VARCHAR(50))</div>
+                <div class="attribute">model (VARCHAR(50))</div>
+                <div class="attribute">year (INT)</div>
+                <div class="attribute">color (VARCHAR(20))</div>
+            </div>
+        </div>
+
+        <!-- Salespersons Entity (Top Right) -->
+        <div id="salespersons" class="entity-box">
+            <div class="header">SALESPERSONS</div>
+            <div class="attributes">
+                <div class="attribute"><span class="pk">PK</span> salesperson_pk (INT)</div>
+                <div class="attribute">staff_id (INT) <span class="text-gray-500 text-xs">(NOT NULL, UNIQUE)</span></div>
+                <div class="attribute">name (VARCHAR(100))</div>
+                <div class="attribute">store (VARCHAR(100))</div>
+            </div>
+        </div>
+
+        <!-- Customers Entity (Bottom Left) -->
+        <div id="customers" class="entity-box">
+            <div class="header">CUSTOMERS</div>
+            <div class="attributes">
+                <div class="attribute"><span class="pk">PK</span> customer_pk (INT)</div>
+                <div class="attribute">customer_id (INT) <span class="text-gray-500 text-xs">(NOT NULL, UNIQUE)</span></div>
+                <div class="attribute">name (VARCHAR(100))</div>
+                <div class="attribute">phone_number (VARCHAR(20))</div>
+                <div class="attribute">email (VARCHAR(100))</div>
+                <div class="attribute">address (VARCHAR(255))</div>
+                <div class="attribute">city (VARCHAR(50))</div>
+                <div class="attribute">state_province (VARCHAR(50))</div>
+                <div class="attribute">country (VARCHAR(50))</div>
+                <div class="attribute">zip_postal_code (VARCHAR(20))</div>
+            </div>
+        </div>
+
+        <!-- Invoices Entity (Bottom Right - Center) -->
+        <div id="invoices" class="entity-box">
+            <div class="header bg-yellow-500">INVOICES (Transaction)</div>
+            <div class="attributes">
+                <div class="attribute"><span class="pk">PK</span> invoice_pk (INT)</div>
+                <div class="attribute">invoice_number (INT) <span class="text-gray-500 text-xs">(NOT NULL, UNIQUE)</span></div>
+                <div class="attribute">date (DATE) <span class="text-gray-500 text-xs">(NOT NULL)</span></div>
+                <div class="attribute"><span class="fk">FK</span> car_id (INT)</div>
+                <div class="attribute"><span class="fk">FK</span> customer_pk (INT)</div>
+                <div class="attribute"><span class="fk">FK</span> salesperson_pk (INT)</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Note on relationships -->
+    <div class="max-w-4xl mx-auto mt-12 p-4 bg-blue-100 border-l-4 border-blue-500 rounded-lg">
+        <h3 class="font-semibold text-lg text-blue-800 mb-2">Relationship Key:</h3>
+        <ul class="text-blue-700 text-sm list-disc pl-5 space-y-1">
+            <li><span class="pk">PK (Green)</span>: Primary Key - Uniquely identifies a record.</li>
+            <li><span class="fk">FK (Red)</span>: Foreign Key - Links to a Primary Key in another table.</li>
+            <li>All relationships point **to** the **INVOICES** table (One-to-Many or One-to-One).</li>
+        </ul>
+    </div>
+</body>
+</html>
+
