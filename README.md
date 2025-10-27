@@ -235,3 +235,104 @@ git push origin master
 - [MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
 - [MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
 - [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
+
+
+
+#creat
+create database if not exists lab_mysql;
+use lab_mysql;
+
+drop table if exists cars;
+create table cars (
+ car_id int auto_increment primary key, 
+ VIN varchar(255),
+ manufacturer varchar(255),
+ model varchar(255),
+ year int,
+ color varchar(255)); 
+ 
+ drop table if exists customers;
+create table customers (
+customer_auto_id INT AUTO_INCREMENT PRIMARY KEY,
+ customer_id int ,
+ name varchar(255),
+ phone_number varchar(255),
+ email varchar(255),
+ adress varchar(255),
+ city varchar(255),
+ state_province varchar(255) ); 
+ 
+ drop table if exists salespersons;
+create table salespersons (
+staff_auto_id INT AUTO_INCREMENT PRIMARY KEY,
+ staff_id int ,
+ name varchar(255),
+ store varchar(255)
+ ); 
+ 
+ drop table if exists invoices;
+create table invoices (
+invoice_id int auto_increment primary key,
+ invoice_number int ,
+ date date,
+ car_id int,
+ customer_auto_id int,
+ staff_auto_id int,
+  FOREIGN KEY (car_id) REFERENCES cars(car_id),
+    FOREIGN KEY (customer_auto_id) REFERENCES customers(customer_auto_id),
+    FOREIGN KEY (staff_auto_id) REFERENCES salespersons(staff_auto_id)); 
+
+#seeding
+
+	INSERT INTO customers (customer_id, name, phone_number, email, adress, city, state_province)
+VALUES (10001, 'Pablo Picasso', '+34636176382', NULL, 'Paseo de la Chopera, 14', 'Madrid', 'Madrid'),
+        (20001, 'Abraham Lincoln', '+1 305 907 7086', NULL, ' 120 SW 8th St', 'Miami', ' Florida'),
+       ( 30001, 'Napoléon Bonaparte', '+33 1 79 75 40 00 ', NULL, '40 Rue du Colisée', 'Paris', 'Île-de-France');
+       
+INSERT INTO cars (VIN, manufacturer, model, year, color)
+VALUES ('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', '2019', 'Blue'),
+('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', '2019', 'Red'),
+('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusion', '2018', 'White'),
+('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', '2018', 'Silver'),
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', '2019', 'Gray'), 
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', '2019', 'Gray');
+
+INSERT INTO salespersons (staff_id, name, store)
+VALUES (00001,'Petey Cruiser', 'Madrid'), 
+(00002, 'Anna Sthesia', 'Barcelona'),
+(00003, 'Paul Molive', 'Berlin'),
+(00004, 'Gail Forcewind', 'Paris'),
+(00005, 'Paige Turner', 'Mimia'),
+(00006, 'Bob Frapples', 'Mexico City'), 
+(00007, 'Walter Melon', 'Amsterdam'), 
+(00008, 'Shonda Leer',  'São Paulo' );
+
+INSERT INTO invoices (invoice_number, date, car_id, customer_auto_id, staff_auto_id)
+VALUES (852399038, '2018-08-22',1,1,1),
+(731166526, '2018-12-31',3,3,5 ),
+(271135104, '2019-01-22',2,2,7 );
+
+#update
+
+SET SQL_SAFE_UPDATES = 0;
+
+update customers
+set email = 'ppicasso@gmail.com'
+where name = 'Pablo Picasso'; 
+
+update customers
+set email = 'lincoln@us.gov'
+where name = 'Abraham Lincoln'; 
+
+update customers
+set email = 'hello@napoleon.me'
+where name = 'Napoléon Bonaparte'; 
+
+#delete
+
+select * from cars; 
+
+delete from cars
+where car_id = 5;
+
+select * from cars; 
