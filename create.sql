@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS coches;
 
 CREATE TABLE IF NOT EXISTS coches(
 		identificacion INT NOT NULL AUTO_INCREMENT,
-        id_coche_VIN VARCHAR(50),
+        id_coche_VIN VARCHAR(50) NOT NULL,
         fabricante VARCHAR (30),
         modelo VARCHAR (30),
         año INT,
@@ -51,7 +51,10 @@ CREATE TABLE IF NOT EXISTS facturas(
     coche INT NOT NULL,
     cliente INT NOT NULL,
     vendedor INT NOT NULL,
-        PRIMARY KEY(identificacion)
+        PRIMARY KEY(identificacion),
+		FOREIGN KEY(coche) REFERENCES coches(identificacion),
+        FOREIGN KEY(cliente) REFERENCES clientes(identificacion),
+        FOREIGN KEY(vendedor) REFERENCES vendedores(identificacion)
 );  
 
 SELECT *

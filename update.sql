@@ -10,5 +10,5 @@ SET email = 'lincoln@us.gov'
 WHERE nombre = 'Abraham Lincoln';
 
 UPDATE Clientes
-SET email = 'hola@napoleon.me'
+SET email = 'hello@napoleon.me'
 WHERE nombre = 'Napoleón Bonaparte';
