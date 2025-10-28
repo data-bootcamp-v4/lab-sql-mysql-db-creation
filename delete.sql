@@ -1,0 +1,3 @@
+USE mydb;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM cars WHERE model = "RAV4";
