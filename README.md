@@ -24,7 +24,7 @@
    <h2>Prerequisites</h2>
   </summary>
 
-Before this starting this lab, you should have learnt about:
+Before this start§ing this lab, you should have learnt about:
 
 - Fundamental concepts of database design, including entities, attributes, primary keys, and foreign keys.
 - Basic comprehension of SQL syntax and statements, such as CREATE, INSERT INTO, UPDATE, and DELETE.
