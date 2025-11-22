@@ -13,7 +13,7 @@
   
 - Design and implement a database schema that accurately represents the relationships between the data sources and allows for efficient querying and analysis.
 - Use appropriate SQL commands to load the data into the database, ensuring data integrity and consistency.
-
+––––––
   <br>
   <hr> 
 
