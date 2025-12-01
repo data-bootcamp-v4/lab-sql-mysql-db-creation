@@ -212,6 +212,9 @@ Complete the challenges in this readme. Follow the instructions and implement:
 
 - Your database design diagram in the form of image.
 
+  <img width="4368" height="2456" alt="ERD_Wk3D1_Lab" src="https://github.com/user-attachments/assets/3c789b42-3b92-4dbf-a08d-455a826b4576" />
+
+
 - `create.sql` and `seeding.sql`
 
 - [OPTIONAL] `update.sql` and `delete.sql`
@@ -225,7 +228,7 @@ git add .
 git commit -m "Solved lab"
 git push origin master
 ```
-
+image : 
 - Create a Pull Request so that your TAs can check your work.
 
 ## References
@@ -235,3 +238,82 @@ git push origin master
 - [MySQL Reference: INSERT Syntax](https://dev.mysql.com/doc/refman/8.0/en/insert.html)
 - [MySQL Reference: UPDATE Syntax](https://dev.mysql.com/doc/refman/8.0/en/update.html)
 - [MySQL Reference: DELETE Syntax](https://dev.mysql.com/doc/refman/8.0/en/delete.html)
+
+# Untitled Diagram documentation
+## Summary
+
+- [Introduction](#introduction)
+- [Database Type](#database-type)
+- [Table Structure](#table-structure)
+	- [Customers](#customers)
+	- [Cars](#cars)
+	- [Salespersons](#salespersons)
+	- [Invoices](#invoices)
+- [Relationships](#relationships)
+- [Database Diagram](#database-diagram)
+
+## Introduction
+
+## Database type
+
+- **Database system:** MySQL
+## Table structure
+
+### Customers
+
+| Name        | Type          | Settings                      | References                    | Note                           |
+|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
+| **Customer_ID** | VARCHAR(255) | 🔑 PK, not null, unique | fk_Customers_Customer_ID_Cars | |
+| **Name** | VARCHAR(255) | not null |  | |
+| **Phone_Number** | VARCHAR(255) | not null |  | |
+| **Email** | VARCHAR(255) | not null |  | |
+| **Address** | VARCHAR(255) | not null |  | |
+| **City** | VARCHAR(255) | not null |  | |
+| **State** | VARCHAR(255) | not null |  | |
+| **Country** | VARCHAR(255) | not null |  | |
+| **Postalcode** | VARCHAR(255) | not null |  | | 
+
+
+### Cars
+Cars - e.g. the vehicle identification number (VIN), manufacturer, model, year, and color of the cars in your company's inventory.
+| Name        | Type          | Settings                      | References                    | Note                           |
+|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
+| **VIN** | VARCHAR(255) | 🔑 PK, not null, unique | fk_Cars_ the vehicle identification number (VIN)_Invoices | |
+| **Customer_ID** | VARCHAR(255) | not null |  | |
+| **manufacturer** | VARCHAR(255) | not null |  | |
+| **model** | VARCHAR(255) | not null |  | |
+| **year** | YEAR | not null |  | |
+| **color** | VARCHAR(255) | not null |  | | 
+
+
+### Salespersons
+
+| Name        | Type          | Settings                      | References                    | Note                           |
+|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
+| **Staff_ID** | VARCHAR(255) | 🔑 PK, not null, unique |  | |
+| **Name** | VARCHAR(255) | not null |  | |
+| **Store** | VARCHAR(255) | not null |  | | 
+
+
+### Invoices
+
+| Name        | Type          | Settings                      | References                    | Note                           |
+|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
+| **Invoice_NO** | VARCHAR(255) | 🔑 PK, not null, unique |  | |
+| **VIN** | VARCHAR(255) | not null |  | |
+| **Customer_ID** | VARCHAR(255) | not null |  | |
+| **Date** | DATE | not null |  | |
+| **Car** | VARCHAR(255) | not null |  | |
+| **Customer** | VARCHAR(255) | not null |  | |
+| **Salesperson** | VARCHAR(255) | not null | fk_Invoices_Salesperson_Salespersons | | 
+
+
+## Relationships
+
+- **Customers to Cars**: one_to_many
+- **Cars to Invoices**: one_to_many
+- **Invoices to Salespersons**: one_to_one
+
+## Database Diagram
+
+```mermaid
