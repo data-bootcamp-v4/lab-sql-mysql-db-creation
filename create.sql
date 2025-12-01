@@ -1,0 +1,73 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+USE lab_mysql;
+
+ALTER TABLE Invoices
+DROP FOREIGN KEY fk_invoice_customer;
+
+ALTER TABLE Invoices
+DROP FOREIGN KEY fk_invoice_car;
+
+ALTER TABLE Invoices
+DROP FOREIGN KEY fk_invoice_salespersons;
+
+DROP TABLE IF EXISTS Cars;
+CREATE TABLE Cars (
+	`VIN` VARCHAR(255) NOT NULL,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` INTEGER NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	`id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	PRIMARY KEY(`id`)
+);
+
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (
+	`customer_id` BIGINT NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state_province` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`zip_postal_code` INTEGER NOT NULL,
+	`id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	PRIMARY KEY(`id`)
+);
+
+DROP TABLE IF EXISTS Salespersons;
+CREATE TABLE Salespersons (
+	`staff_id` BIGINT NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`store` VARCHAR(255) NOT NULL,
+	`id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	PRIMARY KEY(`id`)
+);
+
+DROP TABLE IF EXISTS Invoices;
+CREATE TABLE Invoices (
+	`invoice_no` BIGINT NOT NULL UNIQUE,
+	`date` DATE NOT NULL,
+	`car` BIGINT NOT NULL,
+	`customer` BIGINT NOT NULL,
+	`salesperson` BIGINT NOT NULL,
+	`id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	PRIMARY KEY(`id`)
+);
+
+
+ALTER TABLE Invoices
+ADD CONSTRAINT fk_invoice_customer
+FOREIGN KEY(customer)
+REFERENCES Customers(id)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE Invoices
+ADD CONSTRAINT fk_invoice_car FOREIGN KEY(car) REFERENCES Cars(id)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+
+ALTER TABLE Invoices
+ADD CONSTRAINT fk_invoice_salespersons FOREIGN KEY(salesperson) REFERENCES Salespersons(id)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
