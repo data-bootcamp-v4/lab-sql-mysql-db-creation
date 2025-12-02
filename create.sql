@@ -1,0 +1,54 @@
+DROP DATABASE IF EXISTS lab_mysql;
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS salespersons;
+DROP TABLE IF EXISTS invoices;
+
+CREATE TABLE IF NOT EXISTS `cars` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`vin` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` INTEGER NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `customer` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`cust_id` VARCHAR(255) NOT NULL UNIQUE,
+	`cust_name` VARCHAR(255) NOT NULL,
+	`cust_phone` VARCHAR(255) NOT NULL,
+	`cust_email` VARCHAR(255) NOT NULL,
+	`cust_address` VARCHAR(255) NOT NULL,
+	`cust_city` VARCHAR(255) NOT NULL,
+	`cust_state` VARCHAR(255) NOT NULL,
+	`cust_country` VARCHAR(255) NOT NULL,
+	`cust_zipcode` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+) AUTO_INCREMENT = 0;
+
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`staff_id` VARCHAR(255) NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`invoice_number` VARCHAR(255) NOT NULL UNIQUE,
+	`date` DATETIME NOT NULL,
+	`car_id` INTEGER NOT NULL,
+	`cust_id` INTEGER NOT NULL,
+	`staff_id` INTEGER NOT NULL,
+    FOREIGN KEY(car_id) REFERENCES cars(id),
+    FOREIGN KEY(cust_id) REFERENCES customer(id),
+    FOREIGN KEY(staff_id) REFERENCES salespersons(id),
+	PRIMARY KEY(`id`)
+);
