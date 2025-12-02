@@ -1,5 +1,5 @@
 
-INSERT INTO Cars (vin, manufactor, model, year, color)
+INSERT INTO Cars (vin, manufacturer, model, year, color)
 VALUES
 ('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 2019, 'Blue'),
 ('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 2019, 'Red'),
@@ -20,7 +20,7 @@ VALUES
 (102, 'Maria Garcia', 'Porto Norte'),
 (103, 'Tom Reynolds', 'LA West');
 
-INSERT INTO Invoices (invoice_number, date, car_id, customer_pk, salesperson_pk)
+INSERT INTO Invoices (invoice_number, date, cars_id, customer_pk, salesperson_pk)
 VALUES 
 (5001, '2025-11-01', 1, 1, 1),
 (5002, '2025-11-03', 2, 2, 2),
