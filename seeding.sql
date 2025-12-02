@@ -6,7 +6,7 @@ VALUES (1, '3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 2019, 'Blue'),
        (5, 'DAM41UDN3CHU2WVF6', 'Volvo', 'V60', 2019, 'Gray'),
        (6, 'DAM41UDN3CHU2WVF6', 'Volvo', 'V60 Cross', 2019, 'Gray');
 
-INSERT INTO customers (id, cust_id, cust_name, cust_phone, cust_email, cust_addres, cust_city, cust_state, cust_country, cust_zipcode)
+INSERT INTO customers (id, cust_id, cust_name, cust_phone, cust_email, cust_address, cust_city, cust_state, cust_country, cust_zipcode)
 VALUES (0, '10001', 'Pablo Picasso', '+34 636 17 63 82','-', 'Paseo de la Chopera, 14', 'Madrid', 'Madrid', 'Spain', 28045),
        (1, '20001', 'Abraham Lincoln', '+1 305 907 7086','-', '120 SW 8th St', 'Miami', 'Florida', 'United States', 33130),
        (2, '30001', 'Napoléon Bonaparte', '+33 1 79 75 40 00','-', '40 Rue du Colisée', 'Paris', 'Île-de-France', 'France', 75008);
@@ -22,6 +22,6 @@ VALUES (1, '00001', 'Petey Cruiser', 'Madrid'),
        (8, '00008', 'Shonda Leer', 'São Paulo');       
 
 INSERT INTO invoice (id, invoice_number, date, car, customer, salesperson)
-VALUES (1, '852399038', '22-08-2018', 1, 1, 3),
-       (2, '731166526', '31-12-2018', 3, 3, 5),
-       (3, '271135104', '22-01-2019', 2, 2, 7);
+VALUES (1, '852399038', '2018-08-22', 1, 1, 3),
+       (2, '731166526', '2018-12-31', 3, 3, 5),
+       (3, '271135104', '2019-01-22', 2, 2, 7);
