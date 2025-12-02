@@ -6,34 +6,34 @@ DROP TABLE IF EXISTS cars;
 CREATE TABLE IF NOT EXISTS `cars` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 	`vin` CHAR(17) NOT NULL UNIQUE,
-	`manufacturer` VARCHAR(255) NOT NULL,
-	`model` VARCHAR(255) NOT NULL,
+	`manufacturer` VARCHAR(50) NOT NULL,
+	`model` VARCHAR(50) NOT NULL,
 	`year` YEAR NOT NULL,
-	`color` VARCHAR(255) NOT NULL,
+	`color` VARCHAR(50) NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
 DROP TABLE IF EXISTS customers;
 CREATE TABLE IF NOT EXISTS `customers` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`cust_id` VARCHAR(255) NOT NULL,
-	`cust_name` VARCHAR(255) NOT NULL,
-	`cust_phone` VARCHAR(255) NOT NULL,
-	`cust_email` VARCHAR(255) NOT NULL,
-	`cust_address` VARCHAR(255) NOT NULL,
-	`cust_city` VARCHAR(255) NOT NULL,
-	`cust_state` VARCHAR(255) NOT NULL,
-	`cust_country` VARCHAR(255) NOT NULL,
-	`cust_zipcode` VARCHAR(255) NOT NULL,
+	`cust_id` VARCHAR(50) NOT NULL,
+	`cust_name` VARCHAR(50) NOT NULL,
+	`cust_phone` VARCHAR(30) NOT NULL,
+	`cust_email` VARCHAR(50) NOT NULL,
+	`cust_address` VARCHAR(50) NOT NULL,
+	`cust_city` VARCHAR(50) NOT NULL,
+	`cust_state` VARCHAR(50) NOT NULL,
+	`cust_country` VARCHAR(50) NOT NULL,
+	`cust_zipcode` VARCHAR(50) NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
 DROP TABLE IF EXISTS salespersons;
 CREATE TABLE IF NOT EXISTS `salespersons` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`staff_id` VARCHAR(255) NOT NULL,
-	`name` VARCHAR(255) NOT NULL,
-	`store` VARCHAR(255) NOT NULL,
+	`staff_id` VARCHAR(50) NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	`store` VARCHAR(50) NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
