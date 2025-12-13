@@ -1,0 +1,81 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+
+
+CREATE TABLE IF NOT EXISTS `cars` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`vin` VARCHAR(20) NOT NULL,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` INTEGER NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`vin`)
+);
+
+ALTER TABLE cars
+DROP PRIMARY KEY;
+
+ALTER TABLE cars
+ADD PRIMARY KEY (id);
+
+
+
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`customer_id` INTEGER NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` INTEGER NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	PRIMARY KEY(`customer_id`)
+);
+
+ALTER TABLE customers
+MODIFY COLUMN phone_number VARCHAR(20);
+ALTER TABLE customers
+MODIFY COLUMN email VARCHAR(255) NULL;
+
+
+
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`staff_id` INTEGER NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`staff_store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`staff_id`)
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`invoice_id` INTEGER NOT NULL,
+	`date` DATE NOT NULL,
+	`customer_id` INTEGER NOT NULL,
+	`staff_id` INTEGER NOT NULL,
+	`vin` INTEGER NOT NULL,
+	PRIMARY KEY(`invoice_id`)
+);
+
+ALTER TABLE invoices
+MODIFY COLUMN vin VARCHAR(20);
+
+
+
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`customer_id`) REFERENCES `customers`(`customer_id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`staff_id`) REFERENCES `salespersons`(`staff_id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`vin`) REFERENCES `cars`(`vin`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;

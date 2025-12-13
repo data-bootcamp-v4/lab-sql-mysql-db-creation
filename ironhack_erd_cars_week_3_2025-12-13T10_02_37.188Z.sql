@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS `cars` (
+	`vin` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` INTEGER NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`vin`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	`customer_id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` INTEGER NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	PRIMARY KEY(`customer_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`staff_id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`staff_store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`staff_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`invoice_id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`date` DATE NOT NULL,
+	`customer_id` INTEGER NOT NULL,
+	`staff_id` INTEGER NOT NULL,
+	`vin` INTEGER NOT NULL,
+	PRIMARY KEY(`invoice_id`)
+);
+
+
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`customer_id`) REFERENCES `customers`(`customer_id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`staff_id`) REFERENCES `salespersons`(`staff_id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`vin`) REFERENCES `cars`(`vin`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
