@@ -2,62 +2,72 @@ CREATE DATABASE IF NOT EXISTS lab_mysql;
 
 USE lab_mysql;
 
-DROP TABLE IF EXISTS cars;
-
-CREATE TABLE IF NOT EXISTS `cars` (
-	`vehicle identification number` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`year` INTEGER NOT NULL,
-	`color` CHAR(1) NOT NULL,
-	`customer Id` BIGINT NOT NULL,
-	PRIMARY KEY(`vehicle identification number`)
-);
-
-
 CREATE TABLE IF NOT EXISTS `customers` (
-	`customer Id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
-	`name` CHAR(1) NOT NULL,
-	`phone number` INTEGER NOT NULL,
-	`email` CHAR(1) NOT NULL,
-	`address` VARCHAR(255) NOT NULL,
-	`city` CHAR(1) NOT NULL,
-	`state/province` CHAR(1) NOT NULL,
-	`country` CHAR(1) NOT NULL,
-	`zip/postal code` INTEGER NOT NULL,
-	`staff Id` BIGINT NOT NULL,
-	PRIMARY KEY(`customer Id`)
+	`id` INTEGER,
+	`cust_id` INTEGER NOT NULL UNIQUE,
+	`cust_name` CHAR(255),
+	`cust_phone` VARCHAR(255),
+	`cust_email` VARCHAR(255),
+	`cust_address` VARCHAR(255),
+	`cust_city` CHAR(255),
+	`cust_state` VARCHAR(255),
+	`cust_country` CHAR(255),
+	`cust_zipcode` INTEGER,
+	PRIMARY KEY(`id`)
 );
 
 
 CREATE TABLE IF NOT EXISTS `salespersons` (
-	`staff Id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
-	`name` CHAR(1) NOT NULL,
-	`store` CHAR(1) NOT NULL,
-	`customer Id` BIGINT NOT NULL,
-	PRIMARY KEY(`staff Id`)
+	`id` INTEGER,
+	`staff_id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255),
+	`store` CHAR(255),
+    PRIMARY KEY(`id`)
 );
+
 
 CREATE TABLE IF NOT EXISTS `Invoices` (
-	`invoice number` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`date` DATE NOT NULL,
-	`vehicle identification number` INTEGER NOT NULL,
-	`customer Id` BIGINT,
-	`staff Id` BIGINT,
-	PRIMARY KEY(`invoice number`)
+	`id` INTEGER,
+	`invoice_number` INTEGER NOT NULL UNIQUE,
+	`date` DATE,
+	`car` VARCHAR(255) ,
+	`customer` INTEGER,
+	`staff_id` INTEGER,
+    PRIMARY KEY(`id`)
 );
 
 
+CREATE TABLE IF NOT EXISTS `cars` (
+	`id` INTEGER,
+	`vin` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` CHAR(255),
+	`model` CHAR(255),
+	`year` YEAR,
+	`color` CHAR(255),
+	PRIMARY KEY(`id`)
+);
+
+drop table cars;
+
+drop table customers;
+
+drop table invoices;
+
+drop table salespersons;
+
 ALTER TABLE `Invoices`
-ADD FOREIGN KEY(`customer Id`) REFERENCES `customers`(`customer Id`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `salespersons`
-ADD FOREIGN KEY(`staff Id`) REFERENCES `Invoices`(`staff Id`)
+ADD FOREIGN KEY(`car`) REFERENCES `cars`(`vin`)
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE `Invoices`
-ADD FOREIGN KEY(`vehicle identification number`) REFERENCES `cars`(`vehicle identification number`)
+ADD FOREIGN KEY(`customer`) REFERENCES `customers`(`cust_id`)
 ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `customers`
-ADD FOREIGN KEY(`customer Id`) REFERENCES `cars`(`customer Id`)
+ALTER TABLE `Invoices`
+ADD FOREIGN KEY(`staff_id`) REFERENCES `salespersons`(`staff_id`)
 ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `salespersons`
-ADD FOREIGN KEY(`customer Id`) REFERENCES `customers`(`customer Id`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE invoices
+DROP FOREIGN KEY invoices_ibfk_1;
+
+ALTER TABLE invoices
+ADD CONSTRAINT invoices_ibfk_1
+FOREIGN KEY (car) REFERENCES cars(id);
