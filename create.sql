@@ -46,3 +46,7 @@ CREATE TABLE invoices(
     FOREIGN KEY (id_cliente) REFERENCES customers(id_cliente) ON DELETE CASCADE,
     FOREIGN KEY (id_personal) REFERENCES sales_persons(id_personal) ON DELETE CASCADE
 );
+
+ALTER TABLE customers 
+MODIFY COLUMN telefono VARCHAR(20);
+
