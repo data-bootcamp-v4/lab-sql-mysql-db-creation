@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS lab_mysql;
 USE lab_mysql;
 
 CREATE TABLE lab_mysql.cars (
-VIN INT, 
+VIN CHAR(17), 
 manufacterer VARCHAR(20), 
 model VARCHAR(20), 
 year INT, 
@@ -11,8 +11,6 @@ color ENUM('black', 'white', 'red', 'grey', 'blue', 'other'),
 PRIMARY KEY (VIN)
 );
 
-DROP TABLE lab_mysql.cars
-; 
 
 CREATE TABLE lab_mysql.clients (
 id_client INT AUTO_INCREMENT,
@@ -39,9 +37,10 @@ num_invoice INT,
 id_client INT, 
 id_salesperson INT,
 date DATETIME, 
-car INT, 
+car CHAR(17), 
 PRIMARY KEY (num_invoice),
 FOREIGN KEY (car) REFERENCES cars (VIN) ON DELETE CASCADE,
 FOREIGN KEY (id_client) REFERENCES clients (id_client) ON DELETE CASCADE,
 FOREIGN KEY (id_salesperson) REFERENCES salesperson (id_salesperson) ON DELETE CASCADE
-);
+);								
+
