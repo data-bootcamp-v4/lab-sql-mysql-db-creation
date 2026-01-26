@@ -1,46 +1,47 @@
 CREATE DATABASE IF NOT EXISTS lab_mysql;
-
+SET SQL_SAFE_UPDATES = 0;
 USE lab_mysql;
 
-CREATE TABLE lab_mysql.cars (
+DROP TABLE IF EXISTS cars;
+CREATE TABLE cars (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    vin VARCHAR(20) NOT NULL UNIQUE,
-    manufacturer VARCHAR(50) NOT NULL, 
-    model VARCHAR(50) NOT NULL, 
-    year INT NOT NULL,
-    color VARCHAR(30) NOT NULL
+    vin VARCHAR(20) ,
+    manufacturer VARCHAR(50), 
+    model VARCHAR(50), 
+    year INT ,
+    color VARCHAR(30) 
 );
-
-CREATE TABLE lab_mysql.customers (
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    cust_id INT NOT NULL UNIQUE,
-    cust_name VARCHAR(100) NOT NULL, 
-    cust_phone VARCHAR(30),
-    cust_email VARCHAR(100),
-    cust_addres VARCHAR(150),
-    cust_city VARCHAR(50),
-    cust_state VARCHAR(50), 
-    cust_country VARCHAR(50), 
-    cust_zipcode VARCHAR(15)
+    c_id INT,
+    c_name VARCHAR(100), 
+    c_phone VARCHAR(30),
+    c_email VARCHAR(100),
+    c_address VARCHAR(150),
+    c_city VARCHAR(50),
+    c_state VARCHAR(50), 
+    c_country VARCHAR(50), 
+    c_zipcode VARCHAR(15)
 );
 
-CREATE TABLE lab_mysql.salespersons (
+DROP TABLE IF EXISTS salespersons;
+CREATE TABLE salespersons (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    staff_id VARCHAR(10) NOT NULL UNIQUE,
-    name VARCHAR(100) NOT NULL,
-    store VARCHAR(50) NOT NULL
+    staff_id VARCHAR(10),
+    name VARCHAR(100),
+    store VARCHAR(50) 
 );
 
-CREATE TABLE lab_mysql.invoices (
+DROP TABLE IF EXISTS invoices;
+CREATE TABLE invoices (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    invoice_number INT NOT NULL UNIQUE,
-    date DATE NOT NULL,
+    invoice_number INT,
+    date DATE,
     car INT,
     customer INT,
     salesperson INT,
     FOREIGN KEY (car) REFERENCES cars(id),
     FOREIGN KEY (customer) REFERENCES customers(id),
     FOREIGN KEY (salesperson) REFERENCES salespersons(id)
-);
-
-    
+);  
