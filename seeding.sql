@@ -16,7 +16,12 @@ VALUES (10001, 'Pablo Picasso', '+34 636 17 63 82', '-', 'Paseo de la Chopera, 1
 INSERT INTO salespersons (staff_id, name, store)
 VALUES ('00001', 'Petey Cruiser', 'Madrid'),
 ('00002', 'Anna Sthesia', 'Barcelona'),
-('00003', 'Paul Molive', 'Berlin');
+('00003', 'Paul Molive', 'Berlin'),
+('00004', 'Gail Forcewind', 'Paris'),
+('00005', 'Paige Turner', 'Mimia'),
+('00006', 'Bob Frapples','Mexico City'),
+('00007', 'Walter Melon', 'Amsterdam'),
+('00008', 'Shonda Leer', 'São Paulo');
 
 INSERT INTO invoices (invoice_number, date, car, customer, salesperson)
 VALUES (852399038, '2018-08-22', 1, 1, 3),
@@ -33,8 +38,8 @@ SET email = 'lincoln@us.gov'
 WHERE name = 'Abraham Lincoln';
 
 UPDATE customers
-SET email = 'phello@napoleon.me'
-WHERE name = 'Napoleon Bonaparte';
+SET email = 'hello@napoleon.me'
+WHERE name = 'Napoléon Bonaparte';
 
 DELETE FROM cars
-WHERE car_id = 4;
+WHERE id = 4;
