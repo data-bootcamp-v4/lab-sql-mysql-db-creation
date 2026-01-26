@@ -1,0 +1,11 @@
+CREATE DATABASE
+
+USE
+
+CREATE TABLE auto
+
+CREATE TABLE clientes
+
+CREATE TABLE vendedores
+
+CREATE TABLE facturas
