@@ -1,0 +1,8 @@
+USE autocar;
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM cars
+WHERE VIN = 'DAM41UDN3CHU2WVF6';
+
+SELECT * FROM cars
+WHERE Manufacturer = 'Volvo';
