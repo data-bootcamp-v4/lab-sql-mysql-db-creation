@@ -1,0 +1,57 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+CREATE TABLE IF NOT EXISTS `Customer` (
+	`customerID` INTEGER AUTO_INCREMENT,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(50) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(100) NOT NULL,
+	`state_province` VARCHAR(100) NOT NULL,
+	`country` VARCHAR(100) NOT NULL,
+	`zip_code` VARCHAR(20) NOT NULL,
+	PRIMARY KEY(`customerID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `SalesPerson` (
+	`SalesPersonID` INTEGER AUTO_INCREMENT,
+	`name` VARCHAR(255) NOT NULL,
+	`store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`SalesPersonID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Car` (
+	`VIN` VARCHAR(50),
+	`manufacturer` VARCHAR(100),
+	`model` VARCHAR(100),
+	`year` YEAR,
+	`color` VARCHAR(50),
+	PRIMARY KEY(`VIN`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Invoice` (
+	`invoice_number` INTEGER AUTO_INCREMENT,
+	`date` DATE NOT NULL,
+	`VIN` VARCHAR(50),
+	`CustomerID` INTEGER,
+	`SalesPersonID` INTEGER,
+	PRIMARY KEY(`invoice_number`)
+);
+
+
+ALTER TABLE `Invoice`
+ADD FOREIGN KEY(`VIN`) REFERENCES `Car`(`VIN`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `Invoice`
+ADD FOREIGN KEY(`CustomerID`) REFERENCES `Customer`(`customerID`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `Invoice`
+ADD FOREIGN KEY(`SalesPersonID`) REFERENCES `SalesPerson`(`SalesPersonID`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
