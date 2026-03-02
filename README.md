@@ -91,33 +91,7 @@ In this challenge, you will create the database and tables based on the database
 
 1. Open MySQL Workbench.
 2. Create a new file named `create.sql`.
-3. **Create a MySQL database for this lab** using SQL Query Script in MySQL Workbench. You can execute the following code:
- 
-	```sql
-	CREATE DATABASE IF NOT EXISTS lab_mysql;
-	
-	USE lab_mysql;
-	```
-
-4. **Write SQL queries to create the tables and columns based on your database design.**  
-
-	You will use the `CREATE TABLE` statement for this purpose. You can find the reference for the `CREATE TABLE` statement [here](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html).
-	
-	To test your `CREATE TABLE` statement, you should add a `DROP TABLE` statement above each `CREATE TABLE` statement in your script, like this:
-
-	```sql
-	DROP TABLE IF EXISTS cars;
-	
-	CREATE TABLE cars (
-	...
-	);
-	```
-	
-	Make sure to end each statement with a semicolon.
-
-5. Save the `create.sql` file and execute it to create the database and tables.
-
-CREATE DATABASE IF NOT EXISTS lab_mysql;
+3. CREATE DATABASE IF NOT EXISTS lab_mysql;
 
 USE lab_mysql;
 
@@ -188,6 +162,86 @@ ALTER TABLE `Car`
 ADD FOREIGN KEY(`VIN`) REFERENCES `Invoice`(`VIN`)
 ON UPDATE CASCADE ON DELETE CASCADE;
 
+4. **Write SQL queries to create the tables and columns based on your database design.**  
+
+	You will use the `CREATE TABLE` statement for this purpose. You can find the reference for the `CREATE TABLE` statement [here](https://dev.mysql.com/doc/refman/8.0/en/creating-tables.html).
+	
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+CREATE TABLE IF NOT EXISTS `Customer` (
+	`CustomerID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	PRIMARY KEY(`CustomerID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Car` (
+	`VIN` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	`construction_year` YEAR NOT NULL,
+	`StoreID` INTEGER NOT NULL,
+	PRIMARY KEY(`VIN`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Invoice` (
+	`invoice_number` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`CustomerID` INTEGER NOT NULL,
+	`Date` DATE NOT NULL,
+	`VIN` VARCHAR(255) NOT NULL,
+	`SalesPersonID` INTEGER NOT NULL,
+	PRIMARY KEY(`invoice_number`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `SalesPerson` (
+	`SalesPersonID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`StoreID` INTEGER NOT NULL,
+	PRIMARY KEY(`SalesPersonID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Store` (
+	`StoreID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`store_name` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state_province` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`StoreID`)
+);
+
+
+ALTER TABLE `Invoice`
+ADD FOREIGN KEY(`CustomerID`) REFERENCES `Customer`(`CustomerID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `SalesPerson`
+ADD FOREIGN KEY(`SalesPersonID`) REFERENCES `Invoice`(`SalesPersonID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Store`
+ADD FOREIGN KEY(`StoreID`) REFERENCES `SalesPerson`(`StoreID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Store`
+ADD FOREIGN KEY(`StoreID`) REFERENCES `Car`(`StoreID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Car`
+ADD FOREIGN KEY(`VIN`) REFERENCES `Invoice`(`VIN`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+	
+	Make sure to end each statement with a semicolon.
+
+5. Save the `create.sql` file and execute it to create the database and tables.
+
+
 ## Challenge 3 - Seeding the Database
 
 The purpose of *database seeding* is to provide some  initial data for an empty database to start software development based on that data.  
@@ -198,13 +252,57 @@ Here are some instructions to seed your database:
 2. Create a new file named `seeding.sql`.
 3. Use the `INSERT INTO` statement to insert data into your database. For example:
 
-	```sql
-	INSERT INTO users (id, name, email)
-	VALUES (1, 'John Doe', 'johndoe@example.com'),
-	       (2, 'Jane Smith', 'janesmith@example.com'),
-	       (3, 'Bob Johnson', 'bobjohnson@example.com');
-	```
-	
+	INSERT INTO Store (store_name, zip_code, city, state_province, country) VALUES
+('Madrid', 28045, 'Madrid', 'Madrid', 'Spain'),
+('Barcelona', 33130, 'Barcelona', 'Catalonia', 'Spain'),
+('Berlin', 10115, 'Berlin', 'Berlin', 'Germany'),
+('Paris', 75008, 'Paris', 'Île-de-France', 'France'),
+('Mimia', 12345, 'Mimia', 'StateX', 'CountryY'),
+('Mexico City', 06700, 'Mexico City', 'CDMX', 'Mexico'),
+('Amsterdam', 1012, 'Amsterdam', 'North Holland', 'Netherlands'),
+('São Paulo', 01000, 'São Paulo', 'SP', 'Brazil');
+
+
+INSERT INTO Customer (name, phone_number, email, address, zip_code) VALUES
+('Pablo Picasso', '+34 636 17 63 82', '-', 'Paseo de la Chopera, 14', 28045),
+('Abraham Lincoln', '+1 305 907 7086', '-', '120 SW 8th St', 33130),
+('Napoléon Bonaparte', '+33 1 79 75 40 00', '-', '40 Rue du Colisée', 75008);
+
+
+INSERT INTO SalesPerson (name, StoreID) VALUES
+('Petey Cruiser', 1),
+('Anna Sthesia', 2),
+('Paul Molive', 3),
+('Gail Forcewind', 4),
+('Paige Turner', 5),
+('Bob Frapples', 6),
+('Walter Melon', 7),
+('Shonda Leer', 8);
+
+
+INSERT INTO Car (VIN, manufacturer, model, color, construction_year, StoreID) VALUES
+('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 'Blue', 2019, 1),
+('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 'Red', 2019, 2),
+('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusion', 'White', 2018, 3),
+('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', 'Silver', 2018, 4),
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', 'Gray', 2019, 5),
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60 Cross Country', 'Gray', 2019, 5);
+
+
+INSERT INTO Invoice (invoice_number, Date, VIN, CustomerID, SalesPersonID) VALUES
+(852399038, '2018-08-22', '3K096I98581DHSNUP', 1, 3),
+(731166526, '2018-12-31', 'RKXVNNIHLVVZOUB4M', 3, 5),
+(271135104, '2019-01-22', 'ZM8G7BEUQZ97IH46V', 2, 7);
+
+## Bonus Challenge - Updating and Deleting Database Records
+
+Congratulations on reaching the bonus challenge! In this challenge, you will update and delete database records.
+
+To begin, you have been provided with the email addresses of three customers in the form of a table. Your task is to create an `update.sql` file that will update the existing data in your database with the new email addresses.
+![Test-week3-day1_2026-03-02T19_26_50 654Z](https://github.com/user-attachments/assets/de81e421-5603-49ab-b43a-bee08b930189)
+[seeding.sql](https://github.com/user-attachments/files/25693003/seeding.sql)
+[create.sql](https://github.com/user-attachments/files/25693002/create.sql)
+
 	This would insert three records into the `users` table, with the specified `id`, `name`, and `email` values.
 	
 	You can find more information on how to use `INSERT INTO` [here](https://dev.mysql.com/doc/refman/8.0/en/insert.html).
@@ -255,53 +353,6 @@ Here are some instructions to seed your database:
 
 CREATION OF INSERT INTO QUERY
 
-INSERT INTO Store (store_name, zip_code, city, state_province, country) VALUES
-('Madrid', 28045, 'Madrid', 'Madrid', 'Spain'),
-('Barcelona', 33130, 'Barcelona', 'Catalonia', 'Spain'),
-('Berlin', 10115, 'Berlin', 'Berlin', 'Germany'),
-('Paris', 75008, 'Paris', 'Île-de-France', 'France'),
-('Mimia', 12345, 'Mimia', 'StateX', 'CountryY'),
-('Mexico City', 06700, 'Mexico City', 'CDMX', 'Mexico'),
-('Amsterdam', 1012, 'Amsterdam', 'North Holland', 'Netherlands'),
-('São Paulo', 01000, 'São Paulo', 'SP', 'Brazil');
-
-
-INSERT INTO Customer (name, phone_number, email, address, zip_code) VALUES
-('Pablo Picasso', '+34 636 17 63 82', '-', 'Paseo de la Chopera, 14', 28045),
-('Abraham Lincoln', '+1 305 907 7086', '-', '120 SW 8th St', 33130),
-('Napoléon Bonaparte', '+33 1 79 75 40 00', '-', '40 Rue du Colisée', 75008);
-
-
-INSERT INTO SalesPerson (name, StoreID) VALUES
-('Petey Cruiser', 1),
-('Anna Sthesia', 2),
-('Paul Molive', 3),
-('Gail Forcewind', 4),
-('Paige Turner', 5),
-('Bob Frapples', 6),
-('Walter Melon', 7),
-('Shonda Leer', 8);
-
-
-INSERT INTO Car (VIN, manufacturer, model, color, construction_year, StoreID) VALUES
-('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 'Blue', 2019, 1),
-('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 'Red', 2019, 2),
-('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusion', 'White', 2018, 3),
-('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', 'Silver', 2018, 4),
-('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', 'Gray', 2019, 5),
-('DAM41UDN3CHU2WVF6', 'Volvo', 'V60 Cross Country', 'Gray', 2019, 5);
-
-
-INSERT INTO Invoice (invoice_number, Date, VIN, CustomerID, SalesPersonID) VALUES
-(852399038, '2018-08-22', '3K096I98581DHSNUP', 1, 3),
-(731166526, '2018-12-31', 'RKXVNNIHLVVZOUB4M', 3, 5),
-(271135104, '2019-01-22', 'ZM8G7BEUQZ97IH46V', 2, 7);
-
-## Bonus Challenge - Updating and Deleting Database Records
-
-Congratulations on reaching the bonus challenge! In this challenge, you will update and delete database records.
-
-To begin, you have been provided with the email addresses of three customers in the form of a table. Your task is to create an `update.sql` file that will update the existing data in your database with the new email addresses.
 
 | Name | Email |
 | --- | ---|
