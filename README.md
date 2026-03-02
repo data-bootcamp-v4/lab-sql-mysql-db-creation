@@ -81,6 +81,10 @@ Your end product of this challenge should look something like the E-R diagram sh
 
 ![ERD](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/data-static/images/erd.png)
 
+
+![erm](https://github.com/user-attachments/assets/9e6060c6-2c30-4aaf-9a8d-536a402c5170)
+
+
 Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
 
 
