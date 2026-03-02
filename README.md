@@ -115,7 +115,78 @@ In this challenge, you will create the database and tables based on the database
 	
 	Make sure to end each statement with a semicolon.
 
-5. Save the `create.sql` file and execute it to create the database and tables. 
+5. Save the `create.sql` file and execute it to create the database and tables.
+
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+CREATE TABLE IF NOT EXISTS `Customer` (
+	`CustomerID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	PRIMARY KEY(`CustomerID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Car` (
+	`VIN` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	`construction_year` YEAR NOT NULL,
+	`StoreID` INTEGER NOT NULL,
+	PRIMARY KEY(`VIN`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Invoice` (
+	`invoice_number` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`CustomerID` INTEGER NOT NULL,
+	`Date` DATE NOT NULL,
+	`VIN` VARCHAR(255) NOT NULL,
+	`SalesPersonID` INTEGER NOT NULL,
+	PRIMARY KEY(`invoice_number`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `SalesPerson` (
+	`SalesPersonID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`StoreID` INTEGER NOT NULL,
+	PRIMARY KEY(`SalesPersonID`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Store` (
+	`StoreID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`store_name` VARCHAR(255) NOT NULL,
+	`zip_code` INTEGER NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state_province` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`StoreID`)
+);
+
+
+ALTER TABLE `Invoice`
+ADD FOREIGN KEY(`CustomerID`) REFERENCES `Customer`(`CustomerID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `SalesPerson`
+ADD FOREIGN KEY(`SalesPersonID`) REFERENCES `Invoice`(`SalesPersonID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Store`
+ADD FOREIGN KEY(`StoreID`) REFERENCES `SalesPerson`(`StoreID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Store`
+ADD FOREIGN KEY(`StoreID`) REFERENCES `Car`(`StoreID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `Car`
+ADD FOREIGN KEY(`VIN`) REFERENCES `Invoice`(`VIN`)
+ON UPDATE CASCADE ON DELETE CASCADE;
 
 ## Challenge 3 - Seeding the Database
 
