@@ -1,0 +1,64 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+DROP TABLE IF EXISTS invoices;
+DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS salespersons;
+
+CREATE TABLE `cars` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`vin` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` YEAR NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+
+CREATE TABLE `customers` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`customerID` VARCHAR(255) NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255),
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state_province` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`zip_code` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+
+CREATE TABLE `salespersons` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`staffID` VARCHAR(255) NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+
+CREATE TABLE `invoices` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`invoice_number` VARCHAR(255) NOT NULL UNIQUE,
+	`date` DATE NOT NULL,
+	`car_id` INTEGER NOT NULL,
+	`customer_id` INTEGER NOT NULL,
+	`salesperson_id` INTEGER NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`car_id`) REFERENCES `cars`(`id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`customer_id`) REFERENCES `customers`(`id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`salesperson_id`) REFERENCES `salespersons`(`id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
