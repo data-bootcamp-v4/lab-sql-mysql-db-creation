@@ -175,7 +175,7 @@ Here are some instructions to seed your database:
 
 ### Invoices
 
-| id | invoice_number | date | car | customer | salesperson |
+| 
 | --- | --- | --- | --- | --- | --- |
 | 1 | 852399038 | 22-08-2018 | 1 | 1 | 3 |
 | 2 | 731166526 | 31-12-2018 | 3 | 3 | 5 |
