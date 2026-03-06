@@ -1,0 +1,64 @@
+CREATE DATABASE IF NOT EXISTS impala;
+
+USE impala;
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	`customerID` INTEGER NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`zip` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`phone` INTEGER NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`customerID`)
+);
+
+
+CREATE INDEX `customers_index_0`
+ON `customers` (`customerID`);
+CREATE TABLE IF NOT EXISTS `cars` (
+	`carID` INTEGER NOT NULL,
+	`VIN` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` YEAR NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`carID`)
+);
+
+
+CREATE INDEX `cars_index_0`
+ON `cars` (`carID`);
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`staffID` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`store` VARCHAR(255) NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`staffID`)
+);
+
+
+CREATE INDEX `salespersons_index_0`
+ON `salespersons` (`staffID`);
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`invoiceNo` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`date` DATE NOT NULL,
+	`carID` INTEGER NOT NULL,
+	`customerID` INTEGER NOT NULL,
+	`staffID` INTEGER NOT NULL,
+	PRIMARY KEY(`invoiceNo`)
+);
+
+
+CREATE INDEX `invoices_index_0`
+ON `invoices` (`invoiceNo`);
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`customerID`) REFERENCES `customers`(`customerID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`staffID`) REFERENCES `salespersons`(`staffID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`carID`) REFERENCES `cars`(`carID`)
+ON UPDATE CASCADE ON DELETE CASCADE;
