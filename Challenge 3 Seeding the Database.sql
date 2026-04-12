@@ -5,7 +5,7 @@ VALUES
 ("RKXVNNIHLVVZOUB4M", "Ford", "Fusion", 2018, "white"),
 ("HKNDGS7CU31E9Z7JW", "Toyota", "RAV4", 2018, "black"),
 ("DAM41UDN3CHU2WVF6", "Volvo", "V60", 2019, "white"),
-("DAM41UDN3CHU2WVF7", "Volvo", "V60 Cross Country", 2019, "black");
+("DAM41UDN3CHU2WVF6", "Volvo", "V60 Cross Country", 2019, "black");
 
 INSERT INTO Customers(customer_ID, customer_name, phone_number, email, address, city, state_province, country, zip_code)
 VALUES
@@ -24,7 +24,7 @@ VALUES
 (00007, 'Walter Melon', 'Amsterdam'),
 (00008, 'Shonda Leer', 'São Paulo');
 
-INSERT INTO Invoices (invoice_number, invoice_date, car, customer, salesperson)
+INSERT INTO Invoices (invoice_number, invoice_date, vehicle_identification_number_VIN, customer, salesperson)
 VALUES
 (852399038, '22-08-2018', 1, 1, 3),
 (731166526, '31-12-2018', 3, 3, 5),
