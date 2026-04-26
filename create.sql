@@ -17,7 +17,7 @@ CREATE TABLE cars (
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE customers (
-`id` INT NOT NULL,
+`id` INT NOT NULL AUTO_INCREMENT,
   `cust_id` INT NULL DEFAULT NULL,
   `cust_name` VARCHAR(100) NULL DEFAULT NULL,
   `cust_phone` VARCHAR(20) NULL DEFAULT NULL,
@@ -34,8 +34,8 @@ CREATE TABLE customers (
 
 DROP TABLE IF EXISTS salespersons;
 
-CREATE TABLE salepersons (
-`id` INT NOT NULL,
+CREATE TABLE salespersons (
+`id` INT NOT NULL AUTO_INCREMENT,
   `staff_id` INT NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `store` VARCHAR(45) NULL DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE salepersons (
 DROP TABLE IF EXISTS invoices;
 
 CREATE TABLE invoices (
-`id` INT NOT NULL,
+`id` INT NOT NULL AUTO_INCREMENT,
   `invoice_number` INT NULL DEFAULT NULL,
   `date` DATETIME NULL DEFAULT NULL,
   `car_id` INT NULL DEFAULT NULL,
