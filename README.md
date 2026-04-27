@@ -45,10 +45,13 @@ This lab consists of three challenges that will help you to achieve this task. I
 By completing this lab, you will gain valuable experience in designing and creating a database, and managing data in a relational database management system. Let's get started!
 
 ## Challenge 1 - Design the Database
+<img width="2372" height="1594" alt="challenge 1" src="https://github.com/user-attachments/assets/47b879b3-a9a7-46d2-bf76-2ba89c327063" />
+
 
 Design an **Entity-Relationship (E-R) diagram** for your database.
 
 The database should have at least four tables: `cars`, `customers`, `salespersons` and `invoices`.
+
 
 The minimal information to be recorded is described below:
 
@@ -59,6 +62,8 @@ The minimal information to be recorded is described below:
 1. **Salespersons** - e.g. staff ID, name, and the store at your company.
 
 1. **Invoices** - e.g. the invoice number, date, car, customer, and salesperson related to each car sale.
+
+   ![ERD](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/data-static/images/erd.png)
 
 When designing a database, it's important to consider several aspects to ensure its functionality and efficiency. Here are some things to keep in mind:
 
@@ -79,9 +84,9 @@ When designing a database, it's important to consider several aspects to ensure 
 
 Your end product of this challenge should look something like the E-R diagram shown below, although it doesn't have to be that complicated:
 
-![ERD](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/data-static/images/erd.png)
 
 Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
+
 
 
 ## Challenge 2 - Create the Database and Tables
