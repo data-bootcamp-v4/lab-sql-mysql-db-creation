@@ -83,6 +83,115 @@ Your end product of this challenge should look something like the E-R diagram sh
 
 Using pen and paper (or computer software if you are skilled at creating digital diagrams), design a database to meet the minimum requirements of the task.
 
+## Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+
+    COUNTRY ||--o{ STATE : contains
+    STATE ||--o{ CITY : contains
+
+    CITY ||--o{ CUSTOMERS : lives_in
+    CITY ||--o{ STORES : located_in
+
+    STORES ||--o{ SALESPERSONS : employs
+
+    MANUFACTURERS ||--o{ MODELS : produces
+    MODELS ||--o{ CARS : defines
+
+    COLORS ||--o{ CARS : colors
+
+    CUSTOMERS ||--o{ INVOICES : purchases
+    SALESPERSONS ||--o{ INVOICES : sells
+    CARS ||--o| INVOICES : sold_as
+
+    COUNTRY {
+        bigint country_id PK
+        varchar country_name
+    }
+
+    STATE {
+        bigint state_id PK
+        varchar state_name
+        bigint country_id FK
+    }
+
+    CITY {
+        bigint city_id PK
+        varchar city_name
+        bigint state_id FK
+    }
+
+    CUSTOMERS {
+        bigint customer_id PK
+        varchar customer_name
+        varchar phone_number
+        varchar email
+        varchar address
+        bigint city_id FK
+        varchar postal_code
+    }
+
+    STORES {
+        bigint store_id PK
+        varchar store_name
+        varchar store_address
+        bigint city_id FK
+    }
+
+    SALESPERSONS {
+        bigint salesperson_id PK
+        varchar salesperson_name
+        bigint store_id FK
+    }
+
+    MANUFACTURERS {
+        bigint manufacturer_id PK
+        varchar manufacturer
+    }
+
+    MODELS {
+        bigint model_id PK
+        bigint manufacturer_id FK
+        varchar model
+    }
+
+    COLORS {
+        bigint color_id PK
+        varchar color
+    }
+
+    CARS {
+        bigint car_id PK
+        varchar vin
+        bigint model_id FK
+        bigint color_id FK
+        year production_year
+    }
+
+    INVOICES {
+        bigint invoice_id PK
+        varchar invoice_number
+        bigint car_id FK
+        bigint customer_id FK
+        bigint salesperson_id FK
+        date invoice_date
+    }
+
+```
+## Relationships
+
+- Country → State : One-to-Many (1:N)
+- State → City : One-to-Many (1:N)
+- City → Customers : One-to-Many (1:N)
+- City → Stores : One-to-Many (1:N)
+- Store → Salespersons : One-to-Many (1:N)
+- Manufacturer → Models : One-to-Many (1:N)
+- Model → Cars : One-to-Many (1:N)
+- Color → Cars : One-to-Many (1:N)
+- Customer → Invoices : One-to-Many (1:N)
+- Salesperson → Invoices : One-to-Many (1:N)
+- Car → Invoice : One-to-One (1:1)
 
 ## Challenge 2 - Create the Database and Tables
 
