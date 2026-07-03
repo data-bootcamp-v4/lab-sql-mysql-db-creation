@@ -1,49 +1,57 @@
-CREATE DATABASE IF NOT EXISTS lab_mysql;
-USE lab_mysql;
+USE car_dealership;
 
 DROP TABLE IF EXISTS invoices;
 DROP TABLE IF EXISTS cars;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS salespersons;
 
-
 CREATE TABLE cars (
-  car_id INT AUTO_INCREMENT PRIMARY KEY,
-  vin VARCHAR(17) NOT NULL UNIQUE,
-  manufacturer VARCHAR(50) NOT NULL,
-  model VARCHAR(50) NOT NULL,
-  year YEAR NOT NULL,
-  color VARCHAR(30) NOT NULL
+id INT auto_increment PRIMARY KEY,
+vin VARCHAR(50) NOT NULL,
+manufacturer VARCHAR(50),
+model VARCHAR(50),
+year INT,
+color VARCHAR(30)
 );
 
 CREATE TABLE customers (
-  customer_pk INT AUTO_INCREMENT PRIMARY KEY,
-  customer_id VARCHAR(20) NOT NULL UNIQUE,
-  name VARCHAR(100) NOT NULL,
-  phone VARCHAR(20),
-  email VARCHAR(100),
-  address VARCHAR(150),
-  city VARCHAR(50),
-  state_province VARCHAR(50),
-  country VARCHAR(50),
-  postal_code VARCHAR(20)
+id INT AUTO_INCREMENT PRIMARY KEY,
+customer_id INT UNIQUE,
+name VARCHAR(100),
+phone VARCHAR(30),
+email VARCHAR(100),
+address VARCHAR(100),
+city VARCHAR(100),
+state VARCHAR(100),
+country VARCHAR(100),
+zipcode VARCHAR(100)
 );
 
 CREATE TABLE salespersons (
-  salesperson_pk INT AUTO_INCREMENT PRIMARY KEY,
-  staff_id VARCHAR(20) NOT NULL UNIQUE,
-  name VARCHAR(100) NOT NULL,
-  store VARCHAR(100) NOT NULL
-);
+id INT AUTO_INCREMENT PRIMARY KEY,
+staff_id INT NOT NULL,
+name VARCHAR(50) NOT NULL,
+store VARCHAR(50) NOT NULL
+); 
 
 CREATE TABLE invoices (
-  invoice_id INT AUTO_INCREMENT PRIMARY KEY,
-  invoice_number VARCHAR(20) NOT NULL UNIQUE,
-  invoice_date DATE NOT NULL,
-  car_id INT NOT NULL,
-  customer_pk INT NOT NULL,
-  salesperson_pk INT NOT NULL,
-  FOREIGN KEY (car_id) REFERENCES cars(car_id),
-  FOREIGN KEY (customer_pk) REFERENCES customers(customer_pk),
-  FOREIGN KEY (salesperson_pk) REFERENCES salespersons(salesperson_pk)
+id INT AUTO_INCREMENT PRIMARY KEY,
+invoice_number INT NOT NULL,
+invoice_date DATE NOT NULL,
+car_id INT NOT NULL,
+customer_id INT NOT NULL,
+salesperson_id INT NOT NULL,
+
+FOREIGN KEY (car_id)
+	REFERENCES cars(id),
+    
+FOREIGN KEY (customer_id)
+	REFERENCES customers(id),
+    
+FOREIGN KEY (salesperson_id)
+	REFERENCES salespersons(id)
 );
+
+DESCRIBE invoices;
+
+

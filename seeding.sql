@@ -1,28 +1,45 @@
-USE lab_mysql;
+USE car_dealership;
+
+DESCRIBE cars;
 
 INSERT INTO cars (vin, manufacturer, model, year, color)
-VALUES 
-('1ABCD12345E123456', 'Audi', 'TT', 2018, 'Red'),
-('2ABCD12345E123456', 'Ford', 'F 150', 2021, 'Silver'),
-('3ABCD12345E123456', 'Dodge', 'Ram', 2019, 'Black');
-
-INSERT INTO customers (customer_id, name, phone, email, address, city, state_province, country, postal_code)
 VALUES
-('01', 'Bruno Mars', '123-4567', 'bruno.mars@email.com', '123 Main St', 'New York', 'NY', 'USA', '1234'),
-('02', 'Brad Pitt', '765-4321', 'brad.pitt@email.com', '456 Oak Ave', 'Los Angeles', 'CA', 'USA', '5678'),
-('03', 'Steve Harvey', '678-9012', 'steve.harvey@email.com', '789 Pine Rd', 'Chicago', 'IL', 'USA', '9012');
+('3K096I98581DHSNUP', 'Volkswagen', 'Tiguan', 2019, 'Blue'),
+('ZM8G7BEUQZ97IH46V', 'Peugeot', 'Rifter', 2019, 'Red'),
+('RKXVNNIHLVVZOUB4M', 'Ford', 'Fusion', 2018, 'White'),
+('HKNDGS7CU31E9Z7JW', 'Toyota', 'RAV4', 2018, 'Silver'),
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60', 2019, 'Gray'),
+('DAM41UDN3CHU2WVF6', 'Volvo', 'V60 Cross Country', 2019, 'Gray');
 
+Describe customers;
+
+INSERT INTO customers (customer_id, name, phone, email, address, city, state, country, zipcode)
+VALUES
+(10001, 'Pablo Picasso', '+34 636 17 63 82', NULL, 'Paseo de la Chopera, 14', 'Madrid', 'Madrid', 'Spain', '28045'),
+(20001, 'Abraham Lincoln', '+1 305 907 7086', NULL, '120 SW 8th St', 'Miami', 'Florida', 'United States', '33130'),
+(30001, 'Napoléon Bonaparte', '+33 1 79 75 40 00', NULL, '40 Rue du Colisée', 'Paris', 'Île-de-France', 'France', '75008');
 
 INSERT INTO salespersons (staff_id, name, store)
 VALUES
-('01', 'Rodrigo Quintiliano', 'LA Wheels'),
-('02', 'Miguel Gomes', 'NYCW');
+(1, 'Petey Cruiser', 'Madrid'),
+(2, 'Anna Sthesia', 'Barcelona'),
+(3, 'Paul Molive', 'Berlin'),
+(4, 'Gail Forcewind', 'Paris'),
+(5, 'Paige Turner', 'Miami'),
+(6, 'Bob Frapples', 'Mexico City'),
+(7, 'Walter Melon', 'Amsterdam'),
+(8, 'Shonda Leer', 'São Paulo');
 
-
-INSERT INTO invoices (invoice_number, invoice_date, car_id, customer_pk, salesperson_pk)
+INSERT INTO invoices
+(invoice_number, invoice_date, car_id, customer_id, salesperson_id)
 VALUES
-('01', '2025-01-01', 1, 1, 1),
-('02', '2025-01-02', 2, 2, 2),
-('03', '2025-01-03', 3, 3, 1);
+(852399038, '2018-08-22', 1, 1, 3),
+(731166526, '2018-12-31', 3, 3, 5),
+(271135104, '2019-01-22', 2, 2, 7);
 
+SELECT * FROM cars;
+SELECT * FROM customers;
+SELECT * FROM salespersons;
 SELECT * FROM invoices;
+
+
