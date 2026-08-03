@@ -1,0 +1,12 @@
+SELECT * FROM Cars;
+
+USE car_dealership;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM Cars
+WHERE Car_ID = 5
+  AND VIN = 'DAM41UDN3CHU2WVF6';
+
+SELECT * FROM Cars;
+
