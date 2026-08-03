@@ -1,12 +1,8 @@
-SELECT * FROM Cars;
-
-USE car_dealership;
+USE lab_mysql;
 
 SET SQL_SAFE_UPDATES = 0;
 
-DELETE FROM Cars
-WHERE Car_ID = 5
-  AND VIN = 'DAM41UDN3CHU2WVF6';
-
-SELECT * FROM Cars;
+DELETE FROM cars
+WHERE car_id = 5
+  AND vin = 'DAM41UDN3CHU2WVF6';
 
