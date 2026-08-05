@@ -1,0 +1,5 @@
+USE lab_mysql;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM Cars WHERE id = 4;
