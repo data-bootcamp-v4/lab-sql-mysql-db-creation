@@ -1,0 +1,49 @@
+DROP DATABASE IF EXISTS lab_mysql;
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+DROP TABLE IF EXISTS Cars;
+CREATE TABLE IF NOT EXISTS `Cars` (
+    `id`  BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	`VIN` VARCHAR(255) NOT NULL,
+	`Manufacturer` VARCHAR(255) NOT NULL,
+	`Model` VARCHAR(255) NOT NULL,
+	`Year` INT NOT NULL,
+	`Color` VARCHAR(255),
+	`Invoice_id` BIGINT NOT NULL,
+	PRIMARY KEY(`VIN`)
+);
+
+DROP TABLE IF EXISTS Customer;
+CREATE TABLE IF NOT EXISTS `Customers` (
+	`Customer_id` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	`Custumer_name` VARCHAR(255),
+	`Phone` VARCHAR(255) NOT NULL,
+	`Address` VARCHAR(255),
+	`email` VARCHAR(255),
+	`city` VARCHAR(255),
+	`state` VARCHAR(255),
+	`country` VARCHAR(255),
+	`zip_code` BIGINT,
+	PRIMARY KEY(`Customer_id`)
+);
+
+DROP TABLE IF EXISTS Invoices;
+CREATE TABLE IF NOT EXISTS `Invoices` (
+    `id`  BIGINT NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Invoice_id` BIGINT NOT NULL,
+	`Customer_id` BIGINT,
+	`VIN` BIGINT,
+	`Staff_id` BIGINT,
+	`Date` DATETIME,
+	PRIMARY KEY(`Invoice_id`)
+);
+
+DROP TABLE IF EXISTS sales_person;
+CREATE TABLE IF NOT EXISTS `sales person` (
+    `id`  BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
+	`Staff_id` BIGINT NOT NULL UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`Store` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`Staff_id`)
+);
