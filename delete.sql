@@ -1,0 +1,11 @@
+USE lab_mysql;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM cars
+WHERE id_cars = 4;
+
+SELECT * FROM cars;
+
+SET SQL_SAFE_UPDATES = 1;
+
