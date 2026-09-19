@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <style>
+    .bg { fill: #f6f8fa; }
+    .box { fill: white; stroke: #24292f; stroke-width: 2; rx: 10; }
+    .head { fill: #2f81f7; }
+    .title { fill: white; font: bold 22px Arial, sans-serif; }
+    .field { fill: #24292f; font: 16px Arial, sans-serif; }
+    .key { fill: #0969da; font: bold 16px Arial, sans-serif; }
+    .line { stroke: #57606a; stroke-width: 3; fill: none; }
+    .label { fill: #57606a; font: bold 16px Arial, sans-serif; }
+    .page-title { fill: #24292f; font: bold 30px Arial, sans-serif; }
+  </style>
+  <rect class="bg" width="1200" height="760"/>
+  <text class="page-title" x="430" y="45">Car Dealership ERD</text>
+
+  <g transform="translate(55 90)">
+    <rect class="box" width="315" height="245"/>
+    <path class="head" d="M10 0 H305 Q315 0 315 10 V45 H0 V10 Q0 0 10 0"/>
+    <text class="title" x="125" y="30">cars</text>
+    <text class="key" x="18" y="75">PK  id</text>
+    <text class="field" x="18" y="105">vin</text>
+    <text class="field" x="18" y="135">manufacturer</text>
+    <text class="field" x="18" y="165">model</text>
+    <text class="field" x="18" y="195">year</text>
+    <text class="field" x="18" y="225">color</text>
+  </g>
+
+  <g transform="translate(830 80)">
+    <rect class="box" width="315" height="365"/>
+    <path class="head" d="M10 0 H305 Q315 0 315 10 V45 H0 V10 Q0 0 10 0"/>
+    <text class="title" x="95" y="30">customers</text>
+    <text class="key" x="18" y="75">PK  id</text>
+    <text class="key" x="18" y="105">UQ  cust_id</text>
+    <text class="field" x="18" y="135">cust_name</text>
+    <text class="field" x="18" y="165">cust_phone</text>
+    <text class="field" x="18" y="195">cust_email</text>
+    <text class="field" x="18" y="225">cust_address</text>
+    <text class="field" x="18" y="255">cust_city</text>
+    <text class="field" x="18" y="285">cust_state</text>
+    <text class="field" x="18" y="315">cust_country</text>
+    <text class="field" x="18" y="345">cust_zipcode</text>
+  </g>
+
+  <g transform="translate(55 465)">
+    <rect class="box" width="315" height="165"/>
+    <path class="head" d="M10 0 H305 Q315 0 315 10 V45 H0 V10 Q0 0 10 0"/>
+    <text class="title" x="85" y="30">salespersons</text>
+    <text class="key" x="18" y="75">PK  id</text>
+    <text class="key" x="18" y="105">UQ  staff_id</text>
+    <text class="field" x="18" y="135">name</text>
+    <text class="field" x="175" y="135">store</text>
+  </g>
+
+  <g transform="translate(440 275)">
+    <rect class="box" width="325" height="255"/>
+    <path class="head" d="M10 0 H315 Q325 0 325 10 V45 H0 V10 Q0 0 10 0"/>
+    <text class="title" x="115" y="30">invoices</text>
+    <text class="key" x="18" y="75">PK  id</text>
+    <text class="key" x="18" y="105">UQ  invoice_number</text>
+    <text class="field" x="18" y="135">invoice_date</text>
+    <text class="key" x="18" y="165">FK  car_id</text>
+    <text class="key" x="18" y="195">FK  customer_id</text>
+    <text class="key" x="18" y="225">FK  salesperson_id</text>
+  </g>
+
+  <path class="line" d="M370 215 H410 V440 H440"/>
+  <text class="label" x="380" y="202">1</text><text class="label" x="420" y="430">N</text>
+  <path class="line" d="M830 260 H790 V440 H765"/>
+  <text class="label" x="807" y="248">1</text><text class="label" x="775" y="430">N</text>
+  <path class="line" d="M370 545 H405 V485 H440"/>
+  <text class="label" x="380" y="535">1</text><text class="label" x="420" y="475">N</text>
+
+  <text class="field" x="430" y="700">Each invoice references one car, one customer and one salesperson.</text>
+</svg>
