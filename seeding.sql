@@ -45,3 +45,5 @@ INSERT INTO Invoices (`Invoice N`, Date, VIN, CustomerID, `Staff ID`) VALUES
 (8508, '2023-08-11', 1008, 8, 108),
 (8509, '2023-09-25', 1009, 9, 109),
 (8510, '2023-10-02', 1010, 10, 110);
+
+#Update
