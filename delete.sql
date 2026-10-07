@@ -1,0 +1,2 @@
+DELETE FROM salespersons
+WHERE STAFF_ID = '00008';
