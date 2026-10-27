@@ -1,0 +1,69 @@
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	`customer_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`phone_number` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state_province` VARCHAR(255) NOT NULL,
+	`country` VARCHAR(255) NOT NULL,
+	`zip_postal_code` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`customer_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `cars` (
+	`vin` VARCHAR(255) NOT NULL UNIQUE,
+	`manufacturer` VARCHAR(255) NOT NULL,
+	`model` VARCHAR(255) NOT NULL,
+	`year` YEAR NOT NULL,
+	`color` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`vin`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`invoice_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	`invoice_number` VARCHAR(255) NOT NULL UNIQUE,
+	`customer_id` BIGINT UNSIGNED NOT NULL,
+	`vin` VARCHAR(255) NOT NULL,
+	`date` DATETIME NOT NULL,
+	`salesperson_id` BIGINT NOT NULL UNIQUE,
+	PRIMARY KEY(`invoice_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`salesperson_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	`name` VARCHAR(255) NOT NULL,
+	`store_id` BIGINT NOT NULL UNIQUE,
+	PRIMARY KEY(`salesperson_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `stores` (
+	`store_id` BIGINT UNSIGNED NOT NULL UNIQUE,
+	`store_name` VARCHAR(255) NOT NULL,
+	`address` VARCHAR(255) NOT NULL,
+	`city` VARCHAR(255) NOT NULL,
+	`state` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`store_id`)
+);
+
+
+ALTER TABLE `customers`
+ADD FOREIGN KEY(`customer_id`) REFERENCES `invoices`(`customer_id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`salesperson_id`) REFERENCES `salespersons`(`salesperson_id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `stores`
+ADD FOREIGN KEY(`store_id`) REFERENCES `salespersons`(`store_id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `cars`
+ADD FOREIGN KEY(`vin`) REFERENCES `invoices`(`vin`)
+ON UPDATE CASCADE ON DELETE CASCADE;
