@@ -1,0 +1,77 @@
+DROP DATABASE lab_mysql;
+
+CREATE DATABASE IF NOT EXISTS lab_mysql;
+
+USE lab_mysql;
+
+DROP TABLE IF EXISTS invoices;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS address;
+DROP TABLE IF EXISTS salespersons;
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE IF NOT EXISTS `cars` (
+	`car_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`vin` VARCHAR(30) NOT NULL,
+	`manufacturer` VARCHAR(50) NOT NULL,
+	`model` VARCHAR(50) NOT NULL,
+	`year` INTEGER NOT NULL,
+	`color` VARCHAR(50),
+	PRIMARY KEY(`car_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `customers` (
+	`customer_pk` BIGINT NOT NULL AUTO_INCREMENT,
+	`customer_id` BIGINT NOT NULL UNIQUE,
+	`name` VARCHAR(80) NOT NULL,
+	`phone_no` VARCHAR(20) NOT NULL,
+	`email` VARCHAR(50),
+	`address_id` BIGINT NOT NULL,
+	PRIMARY KEY(`customer_pk`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `address` (
+	`address_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`address` VARCHAR(100) NOT NULL,
+	`city` VARCHAR(30) NOT NULL,
+	`state_province` VARCHAR(20) NOT NULL,
+	`country` VARCHAR(30) NOT NULL,
+	`zip_postal` VARCHAR(20) NOT NULL,
+	PRIMARY KEY(`address_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `salespersons` (
+	`sp_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`staff_id` VARCHAR(255) NOT NULL UNIQUE,
+	`name` VARCHAR(100) NOT NULL,
+	`store` VARCHAR(80) NOT NULL,
+	PRIMARY KEY(`sp_id`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `invoices` (
+	`inv_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`invoice_no` BIGINT NOT NULL,
+	`invoice_date` DATETIME NOT NULL,
+	`car_id` BIGINT NOT NULL,
+	`customer_pk` BIGINT NOT NULL,
+	`sp_id` BIGINT NOT NULL,
+	PRIMARY KEY(`inv_id`)
+);
+
+
+ALTER TABLE `customers`
+ADD FOREIGN KEY(`address_id`) REFERENCES `address`(`address_id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`car_id`) REFERENCES `cars`(`car_id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`customer_pk`) REFERENCES `customers`(`customer_pk`)
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `invoices`
+ADD FOREIGN KEY(`sp_id`) REFERENCES `salespersons`(`sp_id`)
+ON UPDATE CASCADE ON DELETE CASCADE;
