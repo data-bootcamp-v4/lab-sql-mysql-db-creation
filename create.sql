@@ -1,0 +1,59 @@
+DROP DATABASE IF EXISTS lab_mysql;
+CREATE DATABASE lab_mysql;
+USE lab_mysql;
+
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars (
+	id INT NOT NULL AUTO_INCREMENT,
+	vin VARCHAR(17) NOT NULL,
+	manufacturer VARCHAR(50) NOT NULL,
+	model VARCHAR(50) NOT NULL,
+	year YEAR NOT NULL,
+	color VARCHAR(30) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers (
+	id INT NOT NULL AUTO_INCREMENT,
+	customer_id INT NOT NULL UNIQUE,
+	name VARCHAR(100) NOT NULL,
+	phone_number VARCHAR(20) NOT NULL,
+	email VARCHAR(100),
+	address VARCHAR(150) NOT NULL,
+	city VARCHAR(50) NOT NULL,
+	state_province VARCHAR(50) NOT NULL,
+	country VARCHAR(50) NOT NULL,
+	zip_postal_code VARCHAR(10) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS salespersons;
+
+CREATE TABLE salespersons (
+	id INT NOT NULL AUTO_INCREMENT,
+	staff_id CHAR(5) NOT NULL UNIQUE,
+	name VARCHAR(100) NOT NULL,
+	store VARCHAR(50) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS invoices;
+
+CREATE TABLE invoices (
+	id INT NOT NULL AUTO_INCREMENT,
+	invoice_number INT UNSIGNED NOT NULL UNIQUE,
+	date DATE NOT NULL,
+	car_id INT NOT NULL,
+	customer_id INT NOT NULL,
+	salesperson_id INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (car_id) REFERENCES cars(id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (customer_id) REFERENCES customers(id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (salesperson_id) REFERENCES salespersons(id)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
