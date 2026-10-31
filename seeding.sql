@@ -22,3 +22,6 @@ INSERT INTO invoices (invoice_number, invoice_date, car_id, customer_id, salespe
 ('852399038', '2018-08-22', 1, 1, 1),
 ('731166526', '2018-12-31', 3, 2, 3),
 ('271135104', '2019-01-22', 2, 3, 2);
+
+SELECT * FROM cars;
+SELECT * FROM invoices;
