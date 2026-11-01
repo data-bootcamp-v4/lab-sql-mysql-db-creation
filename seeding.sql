@@ -1,4 +1,4 @@
-carsUSE lab_mysql;
+USE lab_mysql;
 
 INSERT INTO cars (vin, manufacturer, model, year, color)
 VALUES
