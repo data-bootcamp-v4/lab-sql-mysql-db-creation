@@ -1,7 +1,17 @@
+
 CREATE DATABASE IF NOT EXISTS car_dealership;
 
 USE car_dealership;
 
+-- Drop existing tables before recreating them
+-- Invoices must be dropped first because it contains foreign keys
+
+DROP TABLE IF EXISTS invoices;
+DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS salespersons;
+
+-- Create cars table
 CREATE TABLE cars (
     id INT AUTO_INCREMENT PRIMARY KEY,
     vin VARCHAR(17) NOT NULL UNIQUE,
@@ -11,6 +21,7 @@ CREATE TABLE cars (
     color VARCHAR(30)
 );
 
+-- Create customers table
 CREATE TABLE customers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cust_id VARCHAR(20) NOT NULL UNIQUE,
@@ -24,6 +35,7 @@ CREATE TABLE customers (
     postal_code VARCHAR(15)
 );
 
+-- Create salespersons table
 CREATE TABLE salespersons (
     id INT AUTO_INCREMENT PRIMARY KEY,
     staff_id VARCHAR(20) NOT NULL UNIQUE,
@@ -31,6 +43,7 @@ CREATE TABLE salespersons (
     store VARCHAR(100)
 );
 
+-- Create invoices table
 CREATE TABLE invoices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     invoice_number VARCHAR(30) NOT NULL UNIQUE,
@@ -51,6 +64,4 @@ CREATE TABLE invoices (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
-USE car_dealership;
 
-DESCRIBE invoices;
