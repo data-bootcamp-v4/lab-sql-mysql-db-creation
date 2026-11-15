@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 970 690" font-family="Helvetica,Arial,sans-serif" font-size="13">
+<rect width="970" height="690" fill="#fff"/>
+<text x="485" y="28" text-anchor="middle" font-size="18">lab_mysql: diagrama entidad-relación</text>
+<rect x="20" y="50" width="390" height="168" fill="#fff" stroke="#000"/>
+<rect x="20" y="50" width="390" height="24" fill="#2d6cdf"/>
+<text x="215" y="67" text-anchor="middle" fill="#fff" font-weight="bold">cars</text>
+<text x="28" y="91">PK id</text><text x="170" y="91">INT UNSIGNED, AUTO_INCREMENT</text>
+<text x="28" y="115">vin</text><text x="170" y="115">CHAR(17), NOT NULL</text>
+<text x="28" y="139">manufacturer</text><text x="170" y="139">VARCHAR(50), NOT NULL</text>
+<text x="28" y="163">model</text><text x="170" y="163">VARCHAR(50), NOT NULL</text>
+<text x="28" y="187">year</text><text x="170" y="187">YEAR, NOT NULL</text>
+<text x="28" y="211">color</text><text x="170" y="211">VARCHAR(30)</text>
+<rect x="20" y="250" width="390" height="264" fill="#fff" stroke="#000"/>
+<rect x="20" y="250" width="390" height="24" fill="#2d6cdf"/>
+<text x="215" y="267" text-anchor="middle" fill="#fff" font-weight="bold">customers</text>
+<text x="28" y="291">PK id</text><text x="170" y="291">INT UNSIGNED, AUTO_INCREMENT</text>
+<text x="28" y="315">UQ cust_id</text><text x="170" y="315">INT UNSIGNED, NOT NULL</text>
+<text x="28" y="339">cust_name</text><text x="170" y="339">VARCHAR(100), NOT NULL</text>
+<text x="28" y="363">cust_phone</text><text x="170" y="363">VARCHAR(25), NOT NULL</text>
+<text x="28" y="387">cust_email</text><text x="170" y="387">VARCHAR(100)</text>
+<text x="28" y="411">cust_address</text><text x="170" y="411">VARCHAR(150)</text>
+<text x="28" y="435">cust_city</text><text x="170" y="435">VARCHAR(60)</text>
+<text x="28" y="459">cust_state</text><text x="170" y="459">VARCHAR(60)</text>
+<text x="28" y="483">cust_country</text><text x="170" y="483">VARCHAR(60)</text>
+<text x="28" y="507">cust_zipcode</text><text x="170" y="507">VARCHAR(12)</text>
+<rect x="20" y="540" width="390" height="120" fill="#fff" stroke="#000"/>
+<rect x="20" y="540" width="390" height="24" fill="#2d6cdf"/>
+<text x="215" y="557" text-anchor="middle" fill="#fff" font-weight="bold">salespersons</text>
+<text x="28" y="581">PK id</text><text x="170" y="581">INT UNSIGNED, AUTO_INCREMENT</text>
+<text x="28" y="605">UQ staff_id</text><text x="170" y="605">CHAR(5), NOT NULL</text>
+<text x="28" y="629">name</text><text x="170" y="629">VARCHAR(100), NOT NULL</text>
+<text x="28" y="653">store</text><text x="170" y="653">VARCHAR(60), NOT NULL</text>
+<rect x="560" y="200" width="390" height="168" fill="#fff" stroke="#000"/>
+<rect x="560" y="200" width="390" height="24" fill="#d9822b"/>
+<text x="755" y="217" text-anchor="middle" fill="#fff" font-weight="bold">invoices</text>
+<text x="568" y="241">PK id</text><text x="710" y="241">INT UNSIGNED, AUTO_INCREMENT</text>
+<text x="568" y="265">UQ invoice_number</text><text x="710" y="265">INT UNSIGNED, NOT NULL</text>
+<text x="568" y="289">date</text><text x="710" y="289">DATE, NOT NULL</text>
+<text x="568" y="313">FK car</text><text x="710" y="313">INT UNSIGNED, ref. cars.id</text>
+<text x="568" y="337">FK customer</text><text x="710" y="337">INT UNSIGNED, ref. customers.id</text>
+<text x="568" y="361">FK salesperson</text><text x="710" y="361">INT UNSIGNED, ref. salespersons.id</text>
+<path d="M410 86 C490 86 480 308 560 308" fill="none" stroke="#444"/>
+<text x="416" y="81" font-size="11">1</text><text x="546" y="303" font-size="11">N</text>
+<path d="M410 286 C490 286 480 332 560 332" fill="none" stroke="#444"/>
+<text x="416" y="281" font-size="11">1</text><text x="546" y="327" font-size="11">N</text>
+<path d="M410 576 C490 576 480 356 560 356" fill="none" stroke="#444"/>
+<text x="416" y="571" font-size="11">1</text><text x="546" y="351" font-size="11">N</text>
+</svg>
