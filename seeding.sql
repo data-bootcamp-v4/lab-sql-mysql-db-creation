@@ -32,5 +32,3 @@ INSERT INTO invoices (invoice_number, invoice_date, car_id, customer_id, salespe
 VALUES ('852399038', STR_TO_DATE('22-08-2018', '%d-%m-%Y'), 1, 1, 3),
        ('731166526', STR_TO_DATE('31-12-2018', '%d-%m-%Y'), 3, 3, 5),
        ('271135104', STR_TO_DATE('22-01-2019', '%d-%m-%Y'), 2, 2, 7);
-
-SELECT * FROM invoices;

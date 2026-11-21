@@ -45,12 +45,10 @@ CREATE TABLE invoices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     invoice_number VARCHAR(20) NOT NULL UNIQUE,
     invoice_date DATE NOT NULL,
-    customer_id INT NOT NULL,          -- new
-    salesperson_id INT NOT NULL,       -- new
-    car_id INT NOT NULL UNIQUE,        -- new
+    customer_id INT NOT NULL,
+    salesperson_id INT NOT NULL,
+    car_id INT NOT NULL UNIQUE,
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (salesperson_id) REFERENCES salespersons(id),
     FOREIGN KEY (car_id) REFERENCES cars(id)
 );
-
-SHOW CREATE TABLE invoices;
