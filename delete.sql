@@ -1,0 +1,3 @@
+SELECT * FROM cars WHERE id = 42;
+DELETE FROM cars WHERE id = 42;
+SELECT * FROM cars;
